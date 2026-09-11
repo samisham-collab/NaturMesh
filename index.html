@@ -99,8 +99,9 @@
     will-change:opacity,transform;
   }
   .plate[data-plate="calm"]{background-image:url("https://images.pexels.com/photos/4827/nature-forest-trees-fog.jpeg?auto=compress&cs=tinysrgb&w=1920")}
-  .plate[data-plate="storm"]{background-image:url("https://images.pexels.com/photos/9754/mountains-clouds-forest-fog.jpg?auto=compress&cs=tinysrgb&w=1920");opacity:0}
-  .plate[data-plate="after"]{background-image:url("https://images.unsplash.com/photo-1765074065241-62533590b33f?auto=format&fit=crop&w=1920&q=80");opacity:0}
+  .plate[data-plate="storm"]{background-image:url("https://images.unsplash.com/photo-1429743433956-0e34951fcc67?auto=format&fit=crop&w=1920&q=80");opacity:0}
+  .plate[data-plate="after"]{background-image:url("https://s0.geograph.org.uk/geophotos/07/24/30/7243081_d92069bc.jpg");opacity:0}
+  .plate[data-plate="dawn"]{background-image:url("https://images.unsplash.com/photo-1681064441994-182fb0cc2ddd?auto=format&fit=crop&w=1920&q=80");opacity:0}
   .grade{
     position:absolute;inset:0;pointer-events:none;
     background:
@@ -322,6 +323,7 @@
     <nav class="navlinks" aria-label="Page sections">
       <a href="#how">How it works</a>
       <a href="#reach">Reach further</a>
+      <a href="enterprise.html">For agencies</a>
     </nav>
     <span class="badge">Concept project</span>
     <a class="get" href="#get">Get the app</a>
@@ -335,6 +337,7 @@
     <div class="plate" data-plate="calm"></div>
     <div class="plate" data-plate="storm"></div>
     <div class="plate" data-plate="after"></div>
+    <div class="plate" data-plate="dawn"></div>
     <div class="chill" id="chill"></div>
     <div class="grade"></div>
 
@@ -539,14 +542,20 @@
           on <a href="https://www.pexels.com/photo/nature-forest-trees-fog-4827/">Pexels</a> · CC0</span>
       </div>
       <div class="credit">
-        <span class="what">Aerial view, cloud and mist over pine forest — the turn</span>
-        <span class="who">Photo by <a href="https://www.pexels.com/@creative-vix/">Creative Vix</a>
-          on <a href="https://www.pexels.com/photo/aerial-photography-of-pine-trees-on-the-mountain-9754/">Pexels</a> · CC0</span>
+        <span class="what">Pine forest silhouetted against a dark, clouded sky — the turn</span>
+        <span class="who">Photo by <a href="https://unsplash.com/@madebyjens">Jens Lelie</a>
+          on <a href="https://unsplash.com/photos/landscape-photography-of-pine-trees-at-mountain-GUneOBRhq9w">Unsplash</a></span>
       </div>
       <div class="credit">
-        <span class="what">Fallen tree across a forest path — the aftermath</span>
-        <span class="who">Photo by <a href="https://unsplash.com/@kiyoshi_jpg">Andres Medina</a>
-          on <a href="https://unsplash.com/photos/fallen-tree-blocking-a-forest-path-with-sunlight-filtering-through-JUjRPA-zAHk">Unsplash</a></span>
+        <span class="what">Storm-damaged area, Caberston Forest — the aftermath</span>
+        <span class="who">Photo by <a href="https://www.geograph.org.uk/profile/26362">Jim Barton</a>,
+          <a href="https://www.geograph.org.uk/photo/7243081">Geograph</a> ·
+          <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a></span>
+      </div>
+      <div class="credit">
+        <span class="what">Sun setting behind a radio tower — the closing frame</span>
+        <span class="who">Photo by <a href="https://unsplash.com/@hdbernd">Bernd Dittrich</a>
+          on <a href="https://unsplash.com/photos/the-sun-is-setting-behind-a-radio-tower-f_QbzyzXEnk">Unsplash</a></span>
       </div>
       <div class="credit">
         <span class="what">Exposed tree roots — "install it early" panel</span>
@@ -569,13 +578,16 @@
       </div>
     </div>
 
-    <p class="licnote">Photographs are drawn from Pexels (Pexels License, two
-      of them released under the older CC0 terms) and Unsplash (Unsplash
-      License). Both permit free commercial use without requiring attribution
-      — the credits above are given because it's the decent thing to do, not
-      because either license demands it. Photographers can still update or
-      remove their work at any time, so if this page ever goes public, it's
-      worth confirming each link still resolves.</p>
+    <p class="licnote">Photographs are drawn from Pexels (Pexels License, one
+      released under the older CC0 terms), Unsplash (Unsplash License), and
+      Geograph Britain and Ireland (Creative Commons Attribution-ShareAlike
+      2.0). Pexels and Unsplash permit free commercial use without requiring
+      attribution — they're credited anyway because it's the decent thing to
+      do. The Geograph photo is different: CC BY-SA 2.0 requires attribution,
+      which is why that credit names the photographer, the source, and the
+      licence itself rather than just a courtesy link. Photographers can
+      still update or remove their work at any time, so if this page ever
+      goes public, it's worth confirming each link still resolves.</p>
   </div>
 </section>
 
@@ -597,7 +609,8 @@
   var plates  = {
     calm : document.querySelector('[data-plate="calm"]'),
     storm: document.querySelector('[data-plate="storm"]'),
-    after: document.querySelector('[data-plate="after"]')
+    after: document.querySelector('[data-plate="after"]'),
+    dawn : document.querySelector('[data-plate="dawn"]')
   };
   var chill   = document.getElementById('chill');
   var caps    = Array.prototype.slice.call(document.querySelectorAll('.cap'));
@@ -660,18 +673,21 @@
     /* photo cross-dissolve */
     var toStorm = ease(seg(p, .26, .46));
     var toAfter = ease(seg(p, .56, .74));
+    var toDawn  = ease(seg(p, .90, 1.00));
     plates.calm.style.opacity  = 1 - toStorm;
     plates.storm.style.opacity = toStorm * (1 - toAfter);
-    plates.after.style.opacity = toAfter;
+    plates.after.style.opacity = toAfter * (1 - toDawn);
+    plates.dawn.style.opacity  = toDawn;
 
     /* slow push-in keeps it feeling alive without parallax jitter */
     var z = 1.10 - p * .10;
     plates.calm.style.transform  = 'scale(' + z + ')';
     plates.storm.style.transform = 'scale(' + (1.04 + p * .05) + ')';
     plates.after.style.transform = 'scale(' + (1.12 - p * .08) + ')';
+    plates.dawn.style.transform  = 'scale(' + (1.10 - toDawn * .06) + ')';
 
-    /* colour drains out of the world */
-    chill.style.opacity = ease(seg(p, .30, .66)) * .55;
+    /* colour drains out of the world, then lifts again once the mesh is up */
+    chill.style.opacity = ease(seg(p, .30, .66)) * .55 * (1 - toDawn);
 
     /* captions */
     show(caps[0], 1 - ease(seg(p, .10, .22)));
@@ -725,7 +741,7 @@
     /* no scroll-driven motion: show the end state, let the captions stack */
     caps.forEach(function(c){ c.style.gridArea='auto'; c.style.opacity=1;
                               c.style.transform='none'; c.style.marginBottom='3rem'; });
-    plates.after.style.opacity = 1;
+    plates.dawn.style.opacity = 1;
     graph.style.opacity = 1;
     lines.forEach(function(l){ l.el.style.strokeDashoffset = 0; });
     cue.style.display = 'none';
