@@ -29,7 +29,7 @@
     --rule:rgba(185,203,180,.18);
     --measure:34rem;
   }
- 
+
   /* ══════════════ reset + base ══════════════ */
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -59,7 +59,7 @@
   h2{font-size:clamp(2rem,5vw,3.3rem);max-width:19ch;margin-bottom:1.3rem}
   .lede{font-size:clamp(1.05rem,2.4vw,1.28rem);max-width:var(--measure);
         color:var(--birch);opacity:.86}
- 
+
   /* ══════════════ masthead ══════════════ */
   .masthead{
     position:fixed;inset:0 0 auto;z-index:50;
@@ -87,7 +87,7 @@
     padding:.52rem 1.05rem;border-radius:2rem;white-space:nowrap;
   }
   @media(max-width:620px){.masthead a.get{display:none}}
- 
+
   /* ══════════════ the transformation stage ══════════════ */
   .stage{height:520vh;position:relative}
   .sticky{
@@ -95,7 +95,7 @@
     display:grid;place-items:center;padding-bottom:5.5rem;
   }
   .plate{
-    position:absolute;inset:0;background-size:cover;background-position:center;
+    position:absolute;inset:0;bottom:-3px;background-size:cover;background-position:center;
     will-change:opacity,transform;
   }
   .plate[data-plate="calm"]{background-image:url("https://images.pexels.com/photos/4827/nature-forest-trees-fog.jpeg?auto=compress&cs=tinysrgb&w=1920")}
@@ -109,7 +109,7 @@
   }
   .chill{position:absolute;inset:0;pointer-events:none;
          background:#0A1B2A;mix-blend-mode:color;opacity:0}
- 
+
   /* captions — all four share one grid cell so they cross-fade in place */
   .captions{
     position:relative;z-index:3;width:min(760px,100% - 2.5rem);
@@ -129,7 +129,7 @@
     letter-spacing:.14em;color:var(--signal);
   }
   .cap.warn .kicker{color:var(--ember)}
- 
+
   /* signal readout */
   .readout{
     position:absolute;z-index:4;left:50%;transform:translateX(-50%);
@@ -156,20 +156,20 @@
   @keyframes ping{70%{box-shadow:0 0 0 9px rgba(127,227,161,0)}
                   100%{box-shadow:0 0 0 0 rgba(127,227,161,0)}}
   .meshpip span{color:var(--signal);font-weight:600}
- 
+
   /* the mesh graph that lights up behind the hero captions */
   .graph{position:absolute;inset:0;z-index:2;opacity:0;pointer-events:none}
   .graph line{stroke:var(--signal);stroke-width:1.1;opacity:.75;
               stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
   .graph circle{fill:var(--signal)}
   .graph .halo{fill:none;stroke:var(--signal);stroke-width:1;opacity:.35}
- 
+
   .cue{
     position:absolute;z-index:4;left:50%;transform:translateX(-50%);
     top:max(env(safe-area-inset-top),5.4rem);
     font-size:.72rem;letter-spacing:.16em;color:var(--birch);opacity:.5;
   }
- 
+
   /* ══════════════ how it hops — a real diagram, not cards ══════════════ */
   .hops{margin-top:3.4rem;display:grid;gap:0}
   .hop{
@@ -189,7 +189,7 @@
   .hop h3{font-size:clamp(1.25rem,2.6vw,1.6rem);margin-bottom:.45rem}
   .hop p{max-width:44ch}
   .hop .range{font-size:.8rem;color:var(--signal);margin-top:.6rem}
- 
+
   /* spec strip — reused under both the hop list and the AP section */
   .specs{
     margin-top:3.2rem;display:grid;
@@ -205,7 +205,7 @@
     .spec{border-right:none;border-bottom:1px solid var(--rule)}
     .spec:last-child{border-bottom:none}
   }
- 
+
   /* ══════════════ reach: the access-point bridge ══════════════ */
   .reach-diagram{margin-top:3rem}
   .bridge{width:100%;height:auto;display:block;opacity:0;transition:opacity .6s ease}
@@ -233,16 +233,20 @@
     .bridge-caption{flex-direction:column;text-align:center;gap:.4rem}
     .bridge-caption .mid{order:-1}
   }
- 
+
   /* ══════════════ split photo panel ══════════════ */
   .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);
          align-items:start}
   @media(max-width:800px){.split{grid-template-columns:1fr}}
-  .shot{aspect-ratio:4/5;background-size:cover;background-position:center;
+  .shot{position:relative;aspect-ratio:4/5;
         border:1px solid var(--rule);border-radius:1.25rem;overflow:hidden}
-  .shot[data-shot="regrow"]{background-image:url("https://images.pexels.com/photos/4500037/pexels-photo-4500037.jpeg?auto=compress&cs=tinysrgb&w=1200")}
-  .shot[data-shot="root"]{background-image:url("https://images.unsplash.com/photo-1707139551516-86b228a3e4db?auto=format&fit=crop&w=1200&q=80")}
- 
+  .shot::before{
+    content:"";position:absolute;inset:0;bottom:-3px;
+    background-size:cover;background-position:center;
+  }
+  .shot[data-shot="regrow"]::before{background-image:url("https://images.pexels.com/photos/4500037/pexels-photo-4500037.jpeg?auto=compress&cs=tinysrgb&w=1200")}
+  .shot[data-shot="root"]::before{background-image:url("https://images.unsplash.com/photo-1707139551516-86b228a3e4db?auto=format&fit=crop&w=1200&q=80")}
+
   /* ══════════════ free banner ══════════════ */
   .free{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
         background:var(--canopy)}
@@ -255,7 +259,7 @@
   .stores .primary{background:var(--signal);color:var(--moss)}
   .stores .ghost{border:1px solid var(--rule);color:var(--birch)}
   .fineprint{margin-top:1.5rem;font-size:.85rem;opacity:.6;max-width:46ch}
- 
+
   /* ══════════════ credits ══════════════ */
   .credits{background:var(--canopy);border-top:1px solid var(--rule)}
   .credits h2{font-size:clamp(1.5rem,3.4vw,2.1rem)}
@@ -271,7 +275,7 @@
                  border-bottom:1px solid rgba(127,227,161,.35)}
   @media(max-width:640px){.credit{grid-template-columns:1fr}}
   .licnote{margin-top:1.8rem;font-size:.85rem;opacity:.65;max-width:60ch}
- 
+
   /* ══════════════ disclaimer + footer ══════════════ */
   .disclaimer{
     background:var(--ember);color:#2A0D04;text-align:center;
@@ -279,7 +283,7 @@
   }
   footer{padding:3rem 0 4rem;font-size:.87rem;opacity:.6}
   footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
- 
+
   /* ══════════════ reduced motion ══════════════ */
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
@@ -291,7 +295,7 @@
 </style>
 </head>
 <body>
- 
+
 <header class="masthead">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="naturMesh home">
@@ -323,7 +327,7 @@
     <a class="get" href="#get">Get the app</a>
   </div>
 </header>
- 
+
 <!-- ══════════════ THE TRANSFORMATION ══════════════ -->
 <main id="top">
 <div class="stage" id="stage">
@@ -333,12 +337,12 @@
     <div class="plate" data-plate="after"></div>
     <div class="chill" id="chill"></div>
     <div class="grade"></div>
- 
+
     <svg class="graph" id="graph" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice"
          aria-hidden="true"></svg>
- 
+
     <p class="cue mono" id="cue">SCROLL</p>
- 
+
     <div class="captions">
       <div class="cap" data-cap="0">
         <span class="kicker">naturMesh</span>
@@ -365,7 +369,7 @@
            Every phone it finds becomes a relay for the next one.</p>
       </div>
     </div>
- 
+
     <div class="readout" role="status" aria-live="polite">
       <span class="bars" id="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       <span class="lbl">Carrier <b id="carrier">4 bars</b></span>
@@ -376,7 +380,7 @@
     </div>
   </div>
 </div>
- 
+
 <!-- ══════════════ HOW ══════════════ -->
 <section id="how">
   <div class="wrap">
@@ -385,7 +389,7 @@
     <p class="lede">There is no server, no subscription, and nothing to
       configure while the wind is still blowing. A message hops phone to phone
       until it reaches someone who still has a way out.</p>
- 
+
     <div class="hops">
       <div class="hop">
         <span class="node"></span>
@@ -429,7 +433,7 @@
         </div>
       </div>
     </div>
- 
+
     <div class="specs">
       <div class="spec"><span class="n">7</span><span class="d">hops before a message retires</span></div>
       <div class="spec"><span class="n">0</span><span class="d">accounts, phone numbers or email</span></div>
@@ -438,7 +442,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ══════════════ REACH: THE ACCESS-POINT BRIDGE ══════════════ -->
 <section id="reach">
   <div class="wrap">
@@ -451,7 +455,7 @@
       finds it, joins it like any open network, and turns it into a bridge
       between two clusters of phones that could never have reached each other
       alone.</p>
- 
+
     <div class="reach-diagram">
       <svg id="bridge" class="bridge" viewBox="0 0 960 360"
            preserveAspectRatio="xMidYMid meet" role="img"
@@ -462,7 +466,7 @@
         <span>Cluster B — four phones, out of reach</span>
       </div>
     </div>
- 
+
     <div class="specs">
       <div class="spec"><span class="n">2 hops</span><span class="d">in and out — instead of a chain of relays</span></div>
       <div class="spec"><span class="n">~50 m</span><span class="d">typical range to associate, indoors</span></div>
@@ -470,7 +474,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ══════════════ SPLIT ══════════════ -->
 <section>
   <div class="wrap split">
@@ -486,7 +490,7 @@
          aria-label="A large tree with its roots exposed, lying in a forest"></div>
   </div>
 </section>
- 
+
 <section>
   <div class="wrap split">
     <div class="shot" data-shot="regrow" role="img"
@@ -501,7 +505,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ══════════════ FREE ══════════════ -->
 <section class="free" id="get">
   <div class="wrap">
@@ -519,13 +523,13 @@
       the page.</p>
   </div>
 </section>
- 
+
 <!-- ══════════════ CREDITS ══════════════ -->
 <section class="credits">
   <div class="wrap">
     <p class="eyebrow">Credits</p>
     <h2>Every photograph on this page, and where it came from.</h2>
- 
+
     <div class="credit-list">
       <div class="credit">
         <span class="what">Misty pine forest — opening frame</span>
@@ -562,7 +566,7 @@
           <a href="https://fonts.google.com/">Google Fonts</a> · SIL Open Font License</span>
       </div>
     </div>
- 
+
     <p class="licnote">Photographs are drawn from Pexels (Pexels License, two
       of them released under the older CC0 terms) and Unsplash (Unsplash
       License). Both permit free commercial use without requiring attribution
@@ -572,10 +576,10 @@
       worth confirming each link still resolves.</p>
   </div>
 </section>
- 
+
 <p class="disclaimer">naturMesh is a concept. There is no app, no company, and
   nothing to download.</p>
- 
+
 <footer>
   <div class="wrap">
     <span>naturMesh — a design exercise in what an emergency mesh app could look like.</span>
@@ -583,7 +587,7 @@
   </div>
 </footer>
 </main>
- 
+
 <script>
 /* ══════════════ hero: the forest-to-storm scroll ══════════════ */
 (function(){
@@ -602,7 +606,7 @@
   var graph   = document.getElementById('graph');
   var cue     = document.getElementById('cue');
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- 
+
   /* ---- build the mesh graph once ---- */
   var NODES = [
     [140,430],[268,352],[214,208],[392,268],[356,466],[498,380],[470,168],
@@ -634,7 +638,7 @@
     graph.appendChild(c);
     dots.push(c);
   });
- 
+
   /* ---- helpers ---- */
   function clamp(v){ return v < 0 ? 0 : v > 1 ? 1 : v; }
   function seg(p,a,b){ return clamp((p - a) / (b - a)); }
@@ -643,38 +647,38 @@
     el.style.opacity = v;
     el.style.transform = 'translateY(' + ((1 - v) * 14) + 'px)';
   }
- 
+
   var lastBars = -1, lastPeers = '';
- 
+
   function frame(){
     var rect = stage.getBoundingClientRect();
     var span = stage.offsetHeight - window.innerHeight;
     var p    = clamp(-rect.top / (span || 1));
- 
+
     /* photo cross-dissolve */
     var toStorm = ease(seg(p, .26, .46));
     var toAfter = ease(seg(p, .56, .74));
     plates.calm.style.opacity  = 1 - toStorm;
     plates.storm.style.opacity = toStorm * (1 - toAfter);
     plates.after.style.opacity = toAfter;
- 
+
     /* slow push-in keeps it feeling alive without parallax jitter */
     var z = 1.10 - p * .10;
     plates.calm.style.transform  = 'scale(' + z + ')';
     plates.storm.style.transform = 'scale(' + (1.04 + p * .05) + ')';
     plates.after.style.transform = 'scale(' + (1.12 - p * .08) + ')';
- 
+
     /* colour drains out of the world */
     chill.style.opacity = ease(seg(p, .30, .66)) * .55;
- 
+
     /* captions */
     show(caps[0], 1 - ease(seg(p, .10, .22)));
     show(caps[1], ease(seg(p, .26, .34)) * (1 - ease(seg(p, .44, .52))));
     show(caps[2], ease(seg(p, .56, .63)) * (1 - ease(seg(p, .72, .78))));
     show(caps[3], ease(seg(p, .80, .87)));
- 
+
     cue.style.opacity = (1 - ease(seg(p, .02, .10))) * .5;
- 
+
     /* carrier signal dying */
     var lit = p < .30 ? 4 : p < .42 ? 3 : p < .50 ? 2 : p < .57 ? 1 : 0;
     if(lit !== lastBars){
@@ -686,7 +690,7 @@
       carrier.style.color = lit === 0 ? 'var(--ember)' : 'var(--birch)';
       lastBars = lit;
     }
- 
+
     /* mesh waking up */
     var wake = ease(seg(p, .62, .90));
     graph.style.opacity = wake;
@@ -698,7 +702,7 @@
       var t = ease(seg(p, .62 + (i / dots.length) * .18, .70 + (i / dots.length) * .18));
       d.setAttribute('r', 1.5 + t * 3);
     });
- 
+
     var count = Math.round(wake * 23);
     var label = count === 0 ? 'mesh idle' : count + ' phones nearby';
     if(label !== lastPeers){
@@ -707,14 +711,14 @@
       lastPeers = label;
     }
   }
- 
+
   var ticking = false;
   function onScroll(){
     if(ticking) return;
     ticking = true;
     requestAnimationFrame(function(){ frame(); ticking = false; });
   }
- 
+
   if(reduced){
     /* no scroll-driven motion: show the end state, let the captions stack */
     caps.forEach(function(c){ c.style.gridArea='auto'; c.style.opacity=1;
@@ -733,20 +737,20 @@
     frame();
   }
 })();
- 
+
 /* ══════════════ reach: the access-point bridge diagram ══════════════ */
 (function(){
   var svg = document.getElementById('bridge');
   if(!svg) return;
   var ns = 'http://www.w3.org/2000/svg';
- 
+
   var LEFT        = [[70,255],[120,300],[195,235],[150,175],[85,195]];
   var LEFT_EDGES  = [[0,1],[0,3],[1,2],[2,3],[3,4],[4,0],[2,4]];
   var RIGHT       = [[890,255],[835,300],[765,235],[810,175]];
   var RIGHT_EDGES = [[0,1],[1,2],[2,3],[3,0],[0,2]];
   var AP          = [480,60];
   var LINKS       = [[AP, LEFT[3]], [AP, RIGHT[3]]];
- 
+
   function addLine(a,b,cls){
     var l = document.createElementNS(ns,'line');
     l.setAttribute('x1',a[0]); l.setAttribute('y1',a[1]);
@@ -761,25 +765,25 @@
     c.setAttribute('class',cls);
     svg.appendChild(c);
   }
- 
+
   LEFT_EDGES.forEach(function(e){ addLine(LEFT[e[0]], LEFT[e[1]], 'mesh-line'); });
   RIGHT_EDGES.forEach(function(e){ addLine(RIGHT[e[0]], RIGHT[e[1]], 'mesh-line'); });
   addLine(LEFT[2], RIGHT[2], 'gap-line');
- 
+
   LINKS.forEach(function(seg){
     var l = addLine(seg[0], seg[1], 'ap-link');
     var len = Math.hypot(seg[1][0]-seg[0][0], seg[1][1]-seg[0][1]);
     l.style.setProperty('--len', len);
   });
- 
+
   LEFT.forEach(function(p){ addDot(p, 4.5, 'phone'); });
   RIGHT.forEach(function(p){ addDot(p, 4.5, 'phone'); });
- 
+
   addDot(AP, 14, 'beacon-pulse');
   addDot(AP, 7, 'beacon');
- 
+
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- 
+
   function addPackets(){
     LINKS.forEach(function(seg, i){
       var c = document.createElementNS(ns,'circle');
@@ -793,12 +797,12 @@
       svg.appendChild(c);
     });
   }
- 
+
   function reveal(){
     svg.classList.add('in');
     if(!reduced) addPackets();
   }
- 
+
   if(reduced || !('IntersectionObserver' in window)){
     reveal();
   } else {
