@@ -236,10 +236,10 @@
 
   /* ══════════════ split photo panel ══════════════ */
   .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);
-         align-items:center}
+         align-items:start}
   @media(max-width:800px){.split{grid-template-columns:1fr}}
   .shot{aspect-ratio:4/5;background-size:cover;background-position:center;
-        border:1px solid var(--rule)}
+        border:1px solid var(--rule);border-radius:1.25rem;overflow:hidden}
   .shot[data-shot="regrow"]{background-image:url("https://images.pexels.com/photos/4500037/pexels-photo-4500037.jpeg?auto=compress&cs=tinysrgb&w=1200")}
   .shot[data-shot="root"]{background-image:url("https://images.unsplash.com/photo-1707139551516-86b228a3e4db?auto=format&fit=crop&w=1200&q=80")}
 
