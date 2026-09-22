@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>NaturMesh links nearby phones over peer-to-peer Wi-Fi and Bluetooth to relay emergency messages when the network is down.</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_naturmesh._tcp</string>
+		<string>_naturmesh._udp</string>
+	</array>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Bluetooth lets NaturMesh reach nearby phones when there is no Wi-Fi.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Fraunces.ttf</string>
+		<string>Archivo.ttf</string>
+	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Dark</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your position is attached to SOS and check-in messages only when you choose to share it.</string>
+</dict>
+</plist>

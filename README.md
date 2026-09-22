@@ -1,11 +1,7 @@
 # naturMesh
 
-A concept site for an emergency mesh-networking app, plus a small working
-prototype of the idea it's built on.
-
-**naturMesh is not a real product.** There's no app, no company, and nothing to
-download. The site is a design exercise in what an emergency mesh app could look
-like if someone built one.
+An emergency mesh-networking app for iPhone, the concept site that describes it,
+and a small LAN prototype of the idea it grew from.
 
 ---
 
@@ -13,8 +9,17 @@ like if someone built one.
 
 | Path | What it is |
 |---|---|
+| `ios/` | **The naturMesh iPhone app.** Xcode 16, SwiftUI, iOS 17+, no dependencies. Bluetooth + peer-to-peer Wi-Fi mesh, signed and encrypted messages, store-and-forward, X25519 direct messages, SOS and check-ins, layered flood protection. See [`ios/README.md`](ios/README.md). |
 | `index.html` | The promotional site. Single file, no build step, no dependencies beyond two webfonts and five hotlinked photos. |
-| `prototype/shelternet.py` | A real, working offline LAN chat server. Python 3 standard library only. |
+| `shelternet.py` | A real, working offline LAN chat server. Python 3 standard library only. |
+
+## The app
+
+Open `ios/NaturMesh.xcodeproj`, set your team under Signing, and run on two or
+more iPhones (Multipeer does not link simulators to each other). The app follows
+the site's design system exactly: same palette, Fraunces and Archivo, the leaf
+mark and the natur**Mesh** wordmark. The site still calls naturMesh a concept;
+that copy is unchanged here and is yours to update when the app ships.
 
 ## The site
 
