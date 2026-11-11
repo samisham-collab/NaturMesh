@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>naturMesh — the network that survives the weather</title>
-<meta name="description" content="A free app that turns the phones around you — and any Wi-Fi still standing — into a network when the towers go down. Concept project.">
+<title>NaturMesh — No Network, No Worries</title>
+<meta name="description" content="NaturMesh gives fire and police quicker access to the locations of those in need of rescue. Concept project.">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0A130F">
 <meta property="og:type" content="website">
-<meta property="og:title" content="naturMesh — the network that survives the weather">
-<meta property="og:description" content="A free app that turns the phones around you — and any Wi-Fi still standing — into a network when the towers go down.">
+<meta property="og:title" content="NaturMesh — No Network, No Worries">
+<meta property="og:description" content="NaturMesh gives fire and police quicker access to the locations of those in need of rescue.">
 <meta property="og:image" content="https://images.pexels.com/photos/4827/nature-forest-trees-fog.jpeg?auto=compress&cs=tinysrgb&w=1200">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,622 +17,734 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2714%27%20fill%3D%27%230B1410%27%2F%3E%3Cpath%20d%3D%27M16%2026V7%27%20stroke%3D%27%237FE3A1%27%20stroke-width%3D%272%27%2F%3E%3Cpath%20d%3D%27M16%2012l6-3M16%2017l7-2M16%2022l5-1M16%2012l-6-3M16%2017l-7-2M16%2022l-5-1%27%20stroke%3D%27%237FE3A1%27%20stroke-width%3D%271.5%27%2F%3E%3C%2Fsvg%3E">
 <style>
-  /* ══════════════ tokens ══════════════ */
-  :root{
-    --moss:#0A130F;
-    --canopy:#132019;
-    --bark:#1D2C23;
-    --lichen:#B9CBB4;
-    --birch:#F4F2EA;
-    --signal:#7FE3A1;
-    --ember:#E8663C;
-    --rule:rgba(185,203,180,.18);
-    --measure:34rem;
-  }
+/* Layout: one scroll story (calm → storm → wreckage → mesh), then field-manual sections for a department */
+:root{
+  --moss:#0A130F;
+  --canopy:#132019;
+  --bark:#1D2C23;
+  --lichen:#B9CBB4;
+  --birch:#F4F2EA;
+  --signal:#7FE3A1;
+  --ember:#E8663C;
+  --rule:rgba(185,203,180,.18);
+  --measure:36rem;
+  --display:Fraunces,Georgia,"Times New Roman",serif;
+  --body:Archivo,"Helvetica Neue",system-ui,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+}
 
-  /* ══════════════ reset + base ══════════════ */
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    background:var(--moss);
-    color:var(--lichen);
-    font-family:Archivo,"Helvetica Neue",system-ui,sans-serif;
-    font-size:17px;line-height:1.6;
-    text-size-adjust:100%;-webkit-text-size-adjust:100%;
-    font-smooth:antialiased;-webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  h1,h2,h3,.display{
-    font-family:Fraunces,Georgia,"Times New Roman",serif;
-    font-weight:400;letter-spacing:-.015em;line-height:1.05;
-    color:var(--birch);font-variation-settings:"SOFT" 30,"WONK" 1;
-  }
-  a{color:inherit}
-  .wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
-  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-        font-variant-numeric:tabular-nums;letter-spacing:.02em}
-  ::selection{background:var(--signal);color:var(--moss)}
-  :focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:2px}
-  section{padding:clamp(5rem,12vh,8.5rem) 0;position:relative}
-  .eyebrow{font-size:.76rem;font-weight:600;letter-spacing:.14em;
-           color:var(--signal);margin-bottom:1.1rem}
-  h2{font-size:clamp(2rem,5vw,3.3rem);max-width:19ch;margin-bottom:1.3rem}
-  .lede{font-size:clamp(1.05rem,2.4vw,1.28rem);max-width:var(--measure);
-        color:var(--birch);opacity:.86}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--moss);color:var(--lichen);
+  font-family:var(--body);font-size:17px;line-height:1.6;
+  text-size-adjust:100%;-webkit-text-size-adjust:100%;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+h1,h2,h3,.display{
+  font-family:var(--display);font-weight:400;letter-spacing:-.015em;line-height:1.05;
+  color:var(--birch);font-variation-settings:"SOFT" 30,"WONK" 1;text-wrap:balance;
+}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{
+  width:100%;max-width:1160px;margin-inline:auto;
+  padding-left:max(20px, env(safe-area-inset-left, 0px));
+  padding-right:max(20px, env(safe-area-inset-right, 0px));
+}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+::selection{background:var(--signal);color:var(--moss)}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:2px}
+section{padding-block:clamp(5rem,12vh,8rem);position:relative;scroll-margin-top:4.5rem}
+.eyebrow{font-size:.76rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--signal);margin-bottom:1.1rem}
+h2{font-size:clamp(2rem,5vw,3.3rem);max-width:20ch;margin-bottom:1.3rem}
+.lede{font-size:clamp(1.05rem,2.4vw,1.24rem);max-width:var(--measure);color:var(--birch);opacity:.88}
+.lede + .lede, .body-copy{margin-top:1rem}
+.body-copy{max-width:var(--measure)}
+.alt{background:var(--canopy);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 
-  /* ══════════════ masthead ══════════════ */
-  .masthead{
-    position:fixed;inset:0 0 auto;z-index:50;
-    padding:1.1rem 0;
-    background:linear-gradient(var(--moss),rgba(10,19,15,0));
-  }
-  .masthead .wrap{display:flex;align-items:center;gap:1.5rem}
-  .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;flex:1}
-  .brand svg{width:30px;height:34px;flex:none}
-  .wordmark{font-size:1.32rem;letter-spacing:-.02em;color:var(--birch);
-            font-family:Archivo,sans-serif;font-weight:400}
-  .wordmark b{font-weight:700}
-  .navlinks{display:flex;gap:1.6rem;font-size:.86rem;white-space:nowrap}
-  .navlinks a{text-decoration:none;color:var(--lichen);opacity:.8}
-  .navlinks a:hover{opacity:1;color:var(--birch)}
-  @media(max-width:860px){.navlinks{display:none}}
-  .badge{
-    font-size:.69rem;font-weight:600;letter-spacing:.06em;
-    color:var(--signal);border:1px solid var(--signal);
-    border-radius:2rem;padding:.2rem .62rem;white-space:nowrap;
-  }
-  .masthead a.get{
-    text-decoration:none;font-weight:600;font-size:.92rem;
-    color:var(--moss);background:var(--signal);
-    padding:.52rem 1.05rem;border-radius:2rem;white-space:nowrap;
-  }
-  @media(max-width:620px){.masthead a.get{display:none}}
+/* ══════════════ masthead ══════════════ */
+.masthead{position:fixed;inset:0 0 auto;z-index:50;
+  padding-top:calc(1rem + env(safe-area-inset-top, 0px));padding-bottom:1rem;
+  background:linear-gradient(var(--moss),rgba(10,19,15,0))}
+.masthead .wrap{display:flex;align-items:center;gap:1.5rem}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;flex:1;min-width:0}
+.brand svg{width:30px;height:34px;flex:none}
+.wordmark{font-size:1.32rem;letter-spacing:-.02em;color:var(--birch);font-weight:400}
+.wordmark b{font-weight:700}
+.navlinks{display:flex;gap:1.5rem;font-size:.86rem;white-space:nowrap}
+.navlinks a{text-decoration:none;color:var(--lichen);opacity:.8}
+.navlinks a:hover{opacity:1;color:var(--birch)}
+@media(max-width:940px){.navlinks{display:none}}
+.badge{font-size:.69rem;font-weight:600;letter-spacing:.06em;color:var(--signal);
+  border:1px solid var(--signal);border-radius:2rem;padding:.2rem .62rem;white-space:nowrap}
+.masthead a.get{text-decoration:none;font-weight:600;font-size:.92rem;color:var(--moss);
+  background:var(--signal);padding:.52rem 1.05rem;border-radius:2rem;white-space:nowrap}
+@media(max-width:620px){.masthead a.get{display:none}}
 
-  /* ══════════════ the transformation stage ══════════════ */
-  .stage{height:520vh;position:relative}
-  .sticky{
-    position:sticky;top:0;height:100svh;overflow:hidden;
-    display:grid;place-items:center;padding-bottom:5.5rem;
-  }
-  .plate{
-    position:absolute;inset:0;bottom:-3px;background-size:cover;background-position:center;
-    will-change:opacity,transform;
-  }
-  .plate[data-plate="calm"]{background-image:url("https://images.pexels.com/photos/4827/nature-forest-trees-fog.jpeg?auto=compress&cs=tinysrgb&w=1920")}
-  .plate[data-plate="storm"]{background-image:url("https://images.unsplash.com/photo-1429743433956-0e34951fcc67?auto=format&fit=crop&w=1920&q=80");opacity:0}
-  .plate[data-plate="after"]{background-image:url("https://s0.geograph.org.uk/photos/62/97/629750_f4a1390e.jpg");opacity:0}
-  .plate[data-plate="dawn"]{background-image:url("https://images.unsplash.com/photo-1681064441994-182fb0cc2ddd?auto=format&fit=crop&w=1920&q=80");opacity:0}
-  .grade{
-    position:absolute;inset:0;pointer-events:none;
-    background:
-      radial-gradient(120% 80% at 50% 10%,rgba(10,19,15,0) 40%,rgba(10,19,15,.85) 100%),
-      linear-gradient(rgba(10,19,15,.3),rgba(10,19,15,.72));
-  }
-  .chill{position:absolute;inset:0;pointer-events:none;
-         background:#0A1B2A;mix-blend-mode:color;opacity:0}
+/* ══════════════ the transformation stage ══════════════ */
+.stage{height:520vh;position:relative}
+.sticky{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center;padding-bottom:5.5rem}
+.plate{position:absolute;inset:0;bottom:-3px;background-color:var(--bark);background-size:cover;background-position:center;will-change:opacity,transform}
+.plate[data-plate="calm"]{background-image:url("https://images.pexels.com/photos/4827/nature-forest-trees-fog.jpeg?auto=compress&cs=tinysrgb&w=1920")}
+.plate[data-plate="storm"]{background-image:url("https://images.unsplash.com/photo-1429743433956-0e34951fcc67?auto=format&fit=crop&w=1920&q=80");opacity:0}
+.plate[data-plate="after"]{background-image:url("https://s0.geograph.org.uk/photos/62/97/629750_f4a1390e.jpg");opacity:0}
+.plate[data-plate="dawn"]{background-image:url("https://images.unsplash.com/photo-1681064441994-182fb0cc2ddd?auto=format&fit=crop&w=1920&q=80");opacity:0}
+.grade{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 80% at 50% 10%,rgba(10,19,15,0) 40%,rgba(10,19,15,.85) 100%),
+             linear-gradient(rgba(10,19,15,.3),rgba(10,19,15,.72))}
+.chill{position:absolute;inset:0;pointer-events:none;background:#0A1B2A;mix-blend-mode:color;opacity:0}
 
-  /* captions — all four share one grid cell so they cross-fade in place */
-  .captions{
-    position:relative;z-index:3;width:min(760px,100% - 2.5rem);
-    display:grid;text-align:center;
-  }
-  .cap{
-    grid-area:1/1;align-self:center;opacity:0;
-    transform:translateY(14px);will-change:opacity,transform;
-  }
-  .cap .display{font-size:clamp(2.4rem,min(7.4vw,9.4vh),5rem)}
-  .cap p{
-    margin:1.1rem auto 0;max-width:34rem;font-size:clamp(1rem,2.4vw,1.16rem);
-    color:var(--birch);opacity:.85;text-wrap:balance;
-  }
-  .cap .kicker{
-    display:inline-block;margin-bottom:1.1rem;font-size:.76rem;font-weight:600;
-    letter-spacing:.14em;color:var(--signal);
-  }
-  .cap.warn .kicker{color:var(--ember)}
+.captions{position:relative;z-index:3;width:min(800px,100% - 2.5rem);display:grid;text-align:center}
+.cap{grid-area:1/1;align-self:center;opacity:0;transform:translateY(14px);will-change:opacity,transform}
+.cap .display{font-size:clamp(2.3rem,min(7vw,9vh),4.8rem)}
+.cap.long .display{font-size:clamp(1.9rem,min(5.2vw,7vh),3.5rem)}
+.cap p{margin:1.1rem auto 0;max-width:36rem;font-size:clamp(1rem,2.4vw,1.16rem);color:var(--birch);opacity:.88;text-wrap:balance}
+.cap .kicker{display:inline-block;margin-bottom:1.1rem;font-size:.76rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--signal)}
+.cap.warn .kicker{color:var(--ember)}
 
-  /* signal readout */
-  .readout{
-    position:absolute;z-index:4;left:50%;transform:translateX(-50%);
-    bottom:max(env(safe-area-inset-bottom),1.4rem);
-    display:flex;align-items:center;gap:1.15rem;
-    padding:.62rem 1.05rem;border-radius:2.4rem;
-    background:rgba(10,19,15,.62);border:1px solid var(--rule);
-    -webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);
-    font-size:.76rem;
-  }
-  .bars{display:flex;align-items:flex-end;gap:3px;height:17px}
-  .bars i{width:4px;background:var(--lichen);border-radius:1px;opacity:.22;
-          transition:opacity .25s,background .25s}
-  .bars i:nth-child(1){height:32%}.bars i:nth-child(2){height:55%}
-  .bars i:nth-child(3){height:78%}.bars i:nth-child(4){height:100%}
-  .bars i.on{opacity:1}
-  .readout .lbl{color:var(--lichen);opacity:.75;white-space:nowrap}
-  .readout .lbl b{color:var(--birch);font-weight:600}
-  .sep{width:1px;height:15px;background:var(--rule)}
-  .meshpip{display:flex;align-items:center;gap:.45rem;opacity:.3;transition:opacity .3s}
-  .meshpip.live{opacity:1}
-  .meshpip .dot{width:7px;height:7px;border-radius:50%;background:var(--signal)}
-  .meshpip.live .dot{box-shadow:0 0 0 0 rgba(127,227,161,.6);animation:ping 1.9s infinite}
-  @keyframes ping{70%{box-shadow:0 0 0 9px rgba(127,227,161,0)}
-                  100%{box-shadow:0 0 0 0 rgba(127,227,161,0)}}
-  .meshpip span{color:var(--signal);font-weight:600}
+.readout{position:absolute;z-index:4;left:50%;transform:translateX(-50%);
+  bottom:max(env(safe-area-inset-bottom),1.4rem);display:flex;align-items:center;gap:1.15rem;
+  padding:.62rem 1.05rem;border-radius:2.4rem;background:rgba(10,19,15,.62);border:1px solid var(--rule);
+  -webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);font-size:.76rem}
+.bars{display:flex;align-items:flex-end;gap:3px;height:17px}
+.bars i{width:4px;background:var(--lichen);border-radius:1px;opacity:.22;transition:opacity .25s,background .25s}
+.bars i:nth-child(1){height:32%}.bars i:nth-child(2){height:55%}
+.bars i:nth-child(3){height:78%}.bars i:nth-child(4){height:100%}
+.bars i.on{opacity:1}
+.readout .lbl{color:var(--lichen);opacity:.75;white-space:nowrap}
+.readout .lbl b{color:var(--birch);font-weight:600}
+.sep{width:1px;height:15px;background:var(--rule)}
+.meshpip{display:flex;align-items:center;gap:.45rem;opacity:.3;transition:opacity .3s;white-space:nowrap}
+.meshpip.live{opacity:1}
+.meshpip .dot{width:7px;height:7px;border-radius:50%;background:var(--signal)}
+.meshpip.live .dot{box-shadow:0 0 0 0 rgba(127,227,161,.6);animation:ping 1.9s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 9px rgba(127,227,161,0)}100%{box-shadow:0 0 0 0 rgba(127,227,161,0)}}
+.meshpip span{color:var(--signal);font-weight:600}
+.graph{position:absolute;inset:0;z-index:2;opacity:0;pointer-events:none}
+.graph line{stroke:var(--signal);stroke-width:1.1;opacity:.75;stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
+.graph circle{fill:var(--signal)}
+.graph .halo{fill:none;stroke:var(--signal);stroke-width:1;opacity:.35}
+.cue{position:absolute;z-index:4;left:50%;transform:translateX(-50%);
+  top:max(env(safe-area-inset-top),5.4rem);font-size:.72rem;letter-spacing:.16em;color:var(--birch);opacity:.5}
 
-  /* the mesh graph that lights up behind the hero captions */
-  .graph{position:absolute;inset:0;z-index:2;opacity:0;pointer-events:none}
-  .graph line{stroke:var(--signal);stroke-width:1.1;opacity:.75;
-              stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
-  .graph circle{fill:var(--signal)}
-  .graph .halo{fill:none;stroke:var(--signal);stroke-width:1;opacity:.35}
+/* ══════════════ spec strips ══════════════ */
+.specs{margin-top:3rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));border:1px solid var(--rule)}
+.spec{padding:1.5rem 1.3rem;border-right:1px solid var(--rule);min-width:0}
+.spec:last-child{border-right:none}
+.spec .n{font-family:var(--display);font-size:1.9rem;color:var(--birch);line-height:1.05;display:block;margin-bottom:.4rem}
+.spec .d{font-size:.86rem;opacity:.75}
+.specs-note{margin-top:.8rem;font-size:.8rem;opacity:.6}
+@media(max-width:700px){
+  .spec{border-right:none;border-bottom:1px solid var(--rule)}
+  .spec:last-child{border-bottom:none}
+}
 
-  .cue{
-    position:absolute;z-index:4;left:50%;transform:translateX(-50%);
-    top:max(env(safe-area-inset-top),5.4rem);
-    font-size:.72rem;letter-spacing:.16em;color:var(--birch);opacity:.5;
-  }
+/* ══════════════ golden window ══════════════ */
+.why-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+@media(max-width:860px){.why-grid{grid-template-columns:1fr}}
+.callwhy{border:1px solid var(--rule);padding:1.6rem 1.5rem;display:grid;gap:1rem}
+.callwhy h3{font-family:var(--body);font-size:.76rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--signal)}
+.callwhy ul{list-style:none;display:grid;gap:.9rem}
+.callwhy li{padding-left:1.2rem;position:relative;color:var(--birch);opacity:.9}
+.callwhy li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--signal)}
 
-  /* ══════════════ how it hops — a real diagram, not cards ══════════════ */
-  .hops{margin-top:3.4rem;display:grid;gap:0}
-  .hop{
-    display:grid;grid-template-columns:auto 1fr;gap:1.5rem;
-    padding:1.9rem 0;border-top:1px solid var(--rule);
-  }
-  .hop:last-child{border-bottom:1px solid var(--rule)}
-  .hop .node{
-    width:13px;height:13px;border-radius:50%;background:var(--signal);
-    margin-top:.55rem;position:relative;flex:none;
-  }
-  .hop .node::after{
-    content:"";position:absolute;left:50%;top:13px;width:1px;
-    height:calc(100% + 2.7rem);background:linear-gradient(var(--signal),rgba(127,227,161,.12));
-  }
-  .hop:last-child .node::after{display:none}
-  .hop h3{font-size:clamp(1.25rem,2.6vw,1.6rem);margin-bottom:.45rem}
-  .hop p{max-width:44ch}
-  .hop .range{font-size:.8rem;color:var(--signal);margin-top:.6rem}
+/* ══════════════ hop list ══════════════ */
+.hops{margin-top:3.2rem;display:grid}
+.hop{display:grid;grid-template-columns:auto 1fr;gap:1.5rem;padding:1.8rem 0;border-top:1px solid var(--rule)}
+.hop:last-child{border-bottom:1px solid var(--rule)}
+.hop .node{width:13px;height:13px;border-radius:50%;background:var(--signal);margin-top:.55rem;position:relative}
+.hop .node::after{content:"";position:absolute;left:50%;top:13px;width:1px;height:calc(100% + 2.6rem);
+  background:linear-gradient(var(--signal),rgba(127,227,161,.12))}
+.hop:last-child .node::after{display:none}
+.hop > div{min-width:0}
+.hop h3{font-size:clamp(1.25rem,2.6vw,1.6rem);margin-bottom:.45rem}
+.hop p{max-width:52ch}
+.hop .range{font-size:.8rem;color:var(--signal);margin-top:.6rem}
 
-  /* spec strip — reused under both the hop list and the AP section */
-  .specs{
-    margin-top:3.2rem;display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(158px,1fr));
-    border:1px solid var(--rule);
-  }
-  .spec{padding:1.5rem 1.3rem;border-right:1px solid var(--rule)}
-  .spec:last-child{border-right:none}
-  .spec .n{font-family:Fraunces,serif;font-size:1.9rem;color:var(--birch);
-           line-height:1.05;display:block;margin-bottom:.4rem}
-  .spec .d{font-size:.86rem;opacity:.72}
-  @media(max-width:700px){
-    .spec{border-right:none;border-bottom:1px solid var(--rule)}
-    .spec:last-child{border-bottom:none}
-  }
+/* ══════════════ canopy units ══════════════ */
+.units{margin-top:3.2rem;display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,2.5rem)}
+@media(max-width:860px){.units{grid-template-columns:1fr}}
+.unit{border:1px solid var(--rule);border-radius:1.25rem;overflow:hidden;background:var(--moss);display:flex;flex-direction:column;min-width:0}
+.unit img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;border-bottom:1px solid var(--rule)}
+.unit-body{padding:1.6rem 1.5rem 1.8rem;display:flex;flex-direction:column;gap:.9rem;flex:1}
+.unit h3{font-size:1.7rem}
+.unit .tag{font-size:.8rem;color:var(--signal)}
+.unit p{color:var(--lichen)}
+.unit dl{margin-top:auto;display:grid;grid-template-columns:auto 1fr;gap:.45rem 1.2rem;padding-top:1rem;border-top:1px solid var(--rule);font-size:.9rem}
+.unit dt{color:var(--lichen);opacity:.7}
+.unit dd{color:var(--birch)}
+.why-canopy{margin-top:4rem;display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media(max-width:860px){.why-canopy{grid-template-columns:1fr}}
+.why-canopy > *{min-width:0}
+.radiusmap{width:100%;height:auto;display:block}
+.radiusmap .ring{fill:none;stroke:var(--signal);stroke-width:1.2}
+.radiusmap .ring.r1{opacity:.6}.radiusmap .ring.r2{opacity:.35}.radiusmap .ring.r3{opacity:.18}
+.radiusmap .ring-label{font-family:var(--mono);font-size:15px;fill:var(--lichen);opacity:.7}
+.radiusmap .phone{fill:var(--birch)}
+.radiusmap .phone.out{fill:var(--lichen);opacity:.4}
+.radiusmap .beacon{fill:var(--signal)}
+.radiusmap .beacon-pulse{fill:none;stroke:var(--signal);stroke-width:1.2;animation:radiusbeacon 2.6s ease-in-out infinite}
+@keyframes radiusbeacon{0%,100%{r:14;opacity:.4}50%{r:24;opacity:.08}}
+.map-legend{display:flex;justify-content:space-between;gap:1rem;margin-top:1rem;font-size:.86rem;flex-wrap:wrap}
+.map-legend span{display:flex;align-items:center;gap:.5rem}
+.map-legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.map-legend .best i{background:var(--signal);opacity:.6}
+.map-legend .home i{background:var(--signal)}
+.map-legend .none i{background:var(--lichen);opacity:.4}
 
-  /* ══════════════ reach: the access-point bridge ══════════════ */
-  .reach-diagram{margin-top:3rem}
-  .bridge{width:100%;height:auto;display:block;opacity:0;transition:opacity .6s ease}
-  .bridge.in{opacity:1}
-  .bridge .mesh-line{stroke:var(--signal);stroke-width:1;opacity:.5}
-  .bridge .gap-line{stroke:var(--lichen);stroke-width:1.2;stroke-dasharray:5 7;opacity:.45}
-  .bridge .phone{fill:var(--birch)}
-  .bridge .ap-link{
-    stroke:var(--signal);stroke-width:1.6;
-    stroke-dasharray:var(--len);stroke-dashoffset:var(--len);
-    transition:stroke-dashoffset 1s ease;transition-delay:.35s;
-  }
-  .bridge.in .ap-link{stroke-dashoffset:0}
-  .bridge .beacon{fill:var(--signal)}
-  .bridge .beacon-pulse{fill:none;stroke:var(--signal);stroke-width:1.2}
-  .bridge.in .beacon-pulse{animation:beaconpulse 2.6s ease-in-out infinite}
-  @keyframes beaconpulse{0%,100%{r:14;opacity:.4}50%{r:25;opacity:.08}}
-  .packet{fill:var(--birch);opacity:.9}
-  .bridge-caption{
-    display:flex;justify-content:space-between;gap:1rem;margin-top:1.1rem;
-    font-size:.86rem;color:var(--lichen);opacity:.8;flex-wrap:wrap;
-  }
-  .bridge-caption .mid{color:var(--signal);font-weight:600;text-align:center;flex:1}
-  @media(max-width:640px){
-    .bridge-caption{flex-direction:column;text-align:center;gap:.4rem}
-    .bridge-caption .mid{order:-1}
-  }
+/* ══════════════ field rows ══════════════ */
+.rows{margin-top:3rem;display:grid}
+.row{display:grid;grid-template-columns:minmax(180px,.35fr) 1fr;gap:1.5rem 3rem;padding:1.6rem 0;border-top:1px solid var(--rule)}
+.row:last-child{border-bottom:1px solid var(--rule)}
+.row h3{font-size:1.35rem}
+.row p{max-width:58ch;min-width:0}
+@media(max-width:700px){.row{grid-template-columns:1fr;gap:.5rem}}
 
-  /* ══════════════ split photo panel ══════════════ */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);
-         align-items:start}
-  @media(max-width:800px){.split{grid-template-columns:1fr}}
-  .shot{position:relative;aspect-ratio:4/5;
-        border:1px solid var(--rule);border-radius:1.25rem;overflow:hidden}
-  .shot::before{
-    content:"";position:absolute;inset:0;bottom:-3px;
-    background-size:cover;background-position:center;
-  }
-  .shot[data-shot="regrow"]::before{background-image:url("https://images.pexels.com/photos/4500037/pexels-photo-4500037.jpeg?auto=compress&cs=tinysrgb&w=1200")}
-  .shot[data-shot="root"]::before{background-image:url("https://images.unsplash.com/photo-1707139551516-86b228a3e4db?auto=format&fit=crop&w=1200&q=80")}
+/* ══════════════ defending the mesh ══════════════ */
+.tdr{margin-top:3rem;display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule)}
+.tdr div{padding:1.5rem 1.4rem;border-right:1px solid var(--rule);min-width:0}
+.tdr div:last-child{border-right:none}
+.tdr b{display:block;font-size:.76rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.5rem}
+.tdr .threat b{color:var(--ember)}
+.tdr .defense b,.tdr .result b{color:var(--signal)}
+.tdr p{color:var(--birch);opacity:.9}
+@media(max-width:760px){.tdr{grid-template-columns:1fr}.tdr div{border-right:none;border-bottom:1px solid var(--rule)}.tdr div:last-child{border-bottom:none}}
+.trust{margin-top:3rem;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.trust article{padding:1.8rem 2rem 1.8rem 0;border-top:1px solid var(--rule);min-width:0}
+.trust article:nth-child(even){padding:1.8rem 0 1.8rem 2rem;border-left:1px solid var(--rule)}
+.trust h3{font-size:1.4rem;margin-bottom:.6rem}
+.trust p + p{margin-top:.7rem}
+@media(max-width:760px){.trust{grid-template-columns:1fr}.trust article,.trust article:nth-child(even){padding:1.6rem 0;border-left:none}}
+.never{margin-top:3rem;display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(1.5rem,4vw,3rem);
+  border:1px solid var(--rule);padding:clamp(1.5rem,3vw,2.2rem)}
+.never h3{font-size:1.5rem}
+.never ul{list-style:none;display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.never li{border:1px solid var(--rule);border-radius:2rem;padding:.35rem .9rem;font-size:.9rem;color:var(--birch);text-decoration:line-through;text-decoration-color:var(--ember)}
+.never > *{min-width:0}
+@media(max-width:760px){.never{grid-template-columns:1fr}}
 
-  /* ══════════════ free banner ══════════════ */
-  .free{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
-        background:var(--canopy)}
-  .free .display{font-size:clamp(2.4rem,7vw,4.6rem);margin-bottom:1.2rem}
-  .stores{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:2.2rem}
-  .stores a{
-    text-decoration:none;font-weight:600;font-size:.96rem;
-    padding:.82rem 1.5rem;border-radius:2rem;
-  }
-  .stores .primary{background:var(--signal);color:var(--moss)}
-  .stores .ghost{border:1px solid var(--rule);color:var(--birch)}
-  .fineprint{margin-top:1.5rem;font-size:.85rem;opacity:.6;max-width:46ch}
+/* ══════════════ open standards ══════════════ */
+.standards{margin-top:3rem;display:grid;grid-template-columns:1fr 1fr;gap:0 3rem}
+.standard{padding:1.5rem 0;border-top:1px solid var(--rule);min-width:0}
+.standard .tag{font-family:var(--mono);font-size:.86rem;font-weight:600;color:var(--signal);margin-bottom:.4rem;display:block}
+@media(max-width:760px){.standards{grid-template-columns:1fr}}
 
-  /* ══════════════ credits ══════════════ */
-  .credits{background:var(--canopy);border-top:1px solid var(--rule)}
-  .credits h2{font-size:clamp(1.5rem,3.4vw,2.1rem)}
-  .credit-list{margin-top:2.2rem;display:grid;gap:0}
-  .credit{
-    display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:baseline;
-    padding:1rem 0;border-top:1px solid var(--rule);font-size:.93rem;
-  }
-  .credit:last-child{border-bottom:1px solid var(--rule)}
-  .credit .what{color:var(--birch)}
-  .credit .who{opacity:.75}
-  .credit .who a{color:var(--signal);text-decoration:none;
-                 border-bottom:1px solid rgba(127,227,161,.35)}
-  @media(max-width:640px){.credit{grid-template-columns:1fr}}
-  .licnote{margin-top:1.8rem;font-size:.85rem;opacity:.65;max-width:60ch}
+/* ══════════════ split photo panel ══════════════ */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+@media(max-width:800px){.split{grid-template-columns:1fr}}
+.split > *{min-width:0}
+.shot{position:relative;aspect-ratio:4/5;max-width:100%;border:1px solid var(--rule);border-radius:1.25rem;overflow:hidden;background:var(--bark)}
+.shot::before{content:"";position:absolute;inset:0;bottom:-3px;background-size:cover;background-position:center}
+.shot[data-shot="root"]::before{background-image:url("https://images.unsplash.com/photo-1707139551516-86b228a3e4db?auto=format&fit=crop&w=1200&q=80")}
 
-  /* ══════════════ disclaimer + footer ══════════════ */
-  .disclaimer{
-    background:var(--ember);color:#2A0D04;text-align:center;
-    padding:.7rem 1rem;font-size:.85rem;font-weight:600;
-  }
-  footer{padding:3rem 0 4rem;font-size:.87rem;opacity:.6}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
+/* ══════════════ banners ══════════════ */
+.banner .display{font-size:clamp(2.3rem,6.5vw,4.4rem);margin-bottom:1.2rem;max-width:18ch}
+.stores{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:2.2rem}
+.stores a{text-decoration:none;font-weight:600;font-size:.96rem;padding:.82rem 1.5rem;border-radius:2rem}
+.stores .primary{background:var(--signal);color:var(--moss)}
+.stores .ghost{border:1px solid var(--rule);color:var(--birch)}
+.fineprint{margin-top:1.2rem;font-size:.85rem;opacity:.6;max-width:46ch}
 
-  /* ══════════════ reduced motion ══════════════ */
-  @media(prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    .meshpip.live .dot{animation:none}
-    .plate,.cap{transition:none!important}
-    .bridge,.bridge .ap-link{transition:none}
-    .bridge.in .beacon-pulse{animation:none}
-  }
+/* ══════════════ questions ══════════════ */
+.qa{margin-top:3rem;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,3vw,2.5rem)}
+@media(max-width:900px){.qa{grid-template-columns:1fr}}
+.qa section{padding:0}
+.qa .topic{border-top:2px solid var(--signal);padding-top:1.2rem;min-width:0}
+.qa h3{font-family:var(--body);font-size:.76rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--signal);margin-bottom:1rem}
+.qa dl{display:grid;gap:1.2rem}
+.qa dt{font-family:var(--display);font-size:1.2rem;color:var(--birch);line-height:1.25;margin-bottom:.35rem}
+
+/* ══════════════ credits ══════════════ */
+.credits h2{font-size:clamp(1.5rem,3.4vw,2.1rem)}
+.credit-list{margin-top:2rem;display:grid}
+.credit{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:baseline;padding:1rem 0;border-top:1px solid var(--rule);font-size:.93rem}
+.credit:last-child{border-bottom:1px solid var(--rule)}
+.credit .what{color:var(--birch);min-width:0}
+.credit .who{opacity:.78;min-width:0}
+.credit .who a{color:var(--signal);text-decoration:none;border-bottom:1px solid rgba(127,227,161,.35)}
+@media(max-width:640px){.credit{grid-template-columns:1fr;gap:.2rem}}
+.licnote{margin-top:1.6rem;font-size:.85rem;opacity:.65;max-width:62ch}
+
+/* ══════════════ disclaimer + footer ══════════════ */
+.disclaimer{background:var(--ember);color:#2A0D04;text-align:center;padding:.7rem 1rem;font-size:.88rem;font-weight:600}
+footer{padding-block:3rem 4rem;font-size:.87rem;opacity:.65}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .meshpip.live .dot,.radiusmap .beacon-pulse{animation:none}
+}
 </style>
 </head>
 <body>
 
 <header class="masthead">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="naturMesh home">
-      <!-- Mark: leaf venation drawn as a node-link graph. The veins are the network. -->
+    <a class="brand" href="#top" aria-label="NaturMesh home">
       <svg viewBox="0 0 34 38" fill="none" aria-hidden="true">
         <path d="M17 37V4" stroke="#7FE3A1" stroke-width="2" stroke-linecap="round"/>
-        <path d="M17 4C17 4 3 9 3 19c0 7 7 11 14 11s14-4 14-11C31 9 17 4 17 4Z"
-              stroke="#7FE3A1" stroke-width="1.4" opacity=".45"/>
-        <path d="M17 11l7.5-3.4M17 17l9-2.6M17 23l7.4-1.4M17 28.5l5-.6
-                 M17 11L9.5 7.6M17 17l-9-2.6M17 23l-7.4-1.4M17 28.5l-5-.6"
-              stroke="#7FE3A1" stroke-width="1.25" stroke-linecap="round"/>
-        <circle cx="24.5" cy="7.6" r="1.9" fill="#7FE3A1"/>
-        <circle cx="26" cy="14.4" r="1.9" fill="#7FE3A1"/>
-        <circle cx="24.4" cy="21.6" r="1.9" fill="#7FE3A1"/>
-        <circle cx="22" cy="27.9" r="1.6" fill="#7FE3A1"/>
-        <circle cx="9.5" cy="7.6" r="1.9" fill="#7FE3A1"/>
-        <circle cx="8" cy="14.4" r="1.9" fill="#7FE3A1"/>
-        <circle cx="9.6" cy="21.6" r="1.9" fill="#7FE3A1"/>
-        <circle cx="12" cy="27.9" r="1.6" fill="#7FE3A1"/>
+        <path d="M17 4C17 4 3 9 3 19c0 7 7 11 14 11s14-4 14-11C31 9 17 4 17 4Z" stroke="#7FE3A1" stroke-width="1.4" opacity=".45"/>
+        <path d="M17 11l7.5-3.4M17 17l9-2.6M17 23l7.4-1.4M17 28.5l5-.6M17 11L9.5 7.6M17 17l-9-2.6M17 23l-7.4-1.4M17 28.5l-5-.6" stroke="#7FE3A1" stroke-width="1.25" stroke-linecap="round"/>
+        <circle cx="24.5" cy="7.6" r="1.9" fill="#7FE3A1"/><circle cx="26" cy="14.4" r="1.9" fill="#7FE3A1"/>
+        <circle cx="24.4" cy="21.6" r="1.9" fill="#7FE3A1"/><circle cx="22" cy="27.9" r="1.6" fill="#7FE3A1"/>
+        <circle cx="9.5" cy="7.6" r="1.9" fill="#7FE3A1"/><circle cx="8" cy="14.4" r="1.9" fill="#7FE3A1"/>
+        <circle cx="9.6" cy="21.6" r="1.9" fill="#7FE3A1"/><circle cx="12" cy="27.9" r="1.6" fill="#7FE3A1"/>
         <circle cx="17" cy="4" r="2.6" fill="#F4F2EA"/>
       </svg>
-      <span class="wordmark">natur<b>Mesh</b></span>
+      <span class="wordmark">Natur<b>Mesh</b></span>
     </a>
     <nav class="navlinks" aria-label="Page sections">
       <a href="#how">How it works</a>
-      <a href="#reach">Reach further</a>
-      <a href="enterprise.html">For agencies</a>
+      <a href="#canopy">Canopy</a>
+      <a href="#security">Security</a>
+      <a href="#questions">Questions</a>
     </nav>
     <span class="badge">Concept project</span>
-    <a class="get" href="#get">Get the app</a>
+    <a class="get" href="#contact">Request a briefing</a>
   </div>
 </header>
 
-<!-- ══════════════ THE TRANSFORMATION ══════════════ -->
 <main id="top">
-<div class="stage" id="stage">
-  <div class="sticky">
-    <div class="plate" data-plate="calm"></div>
-    <div class="plate" data-plate="storm"></div>
-    <div class="plate" data-plate="after"></div>
-    <div class="plate" data-plate="dawn"></div>
-    <div class="chill" id="chill"></div>
-    <div class="grade"></div>
+  <!-- ══════════════ THE TRANSFORMATION ══════════════ -->
+  <div class="stage" id="stage">
+    <div class="sticky">
+      <div class="plate" data-plate="calm"></div>
+      <div class="plate" data-plate="storm"></div>
+      <div class="plate" data-plate="after"></div>
+      <div class="plate" data-plate="dawn"></div>
+      <div class="chill" id="chill"></div>
+      <div class="grade"></div>
+      <svg class="graph" id="graph" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+      <p class="cue mono" id="cue">SCROLL</p>
 
-    <svg class="graph" id="graph" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice"
-         aria-hidden="true"></svg>
-
-    <p class="cue mono" id="cue">SCROLL</p>
-
-    <div class="captions">
-      <div class="cap" data-cap="0">
-        <span class="kicker">naturMesh</span>
-        <h1 class="display">Nothing out here<br>is on the grid.</h1>
-        <p>Four bars, a clear sky, and a forest that has stood for two hundred
-           years. This is the easy part.</p>
-      </div>
-      <div class="cap warn" data-cap="1">
-        <span class="kicker">14:52 — warning issued</span>
-        <h2 class="display">Then the sky<br>changes its mind.</h2>
-        <p>Straight-line winds at ninety. The tower on the ridge has a generator,
-           a fuel line, and about six hours of luck.</p>
-      </div>
-      <div class="cap warn" data-cap="2">
-        <span class="kicker">17:31 — no service</span>
-        <h2 class="display">And everyone<br>goes quiet.</h2>
-        <p>Not the internet. Not a carrier. Every phone in the county reduced to
-           a flashlight with a camera on the back.</p>
-      </div>
-      <div class="cap" data-cap="3">
-        <span class="kicker">17:31 — 23 nearby</span>
-        <h2 class="display">Except the ones<br>running naturMesh.</h2>
-        <p>Your phone stops looking for a tower and starts looking for people.
-           Every phone it finds becomes a relay for the next one.</p>
-      </div>
-    </div>
-
-    <div class="readout" role="status" aria-live="polite">
-      <span class="bars" id="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <span class="lbl">Carrier <b id="carrier">4 bars</b></span>
-      <span class="sep"></span>
-      <span class="meshpip" id="pip">
-        <span class="dot"></span><span id="peers">mesh idle</span>
-      </span>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════ HOW ══════════════ -->
-<section id="how">
-  <div class="wrap">
-    <p class="eyebrow">How a message gets out</p>
-    <h2>Your neighbours are the infrastructure.</h2>
-    <p class="lede">There is no server, no subscription, and nothing to
-      configure while the wind is still blowing. A message hops phone to phone
-      until it reaches someone who still has a way out.</p>
-
-    <div class="hops">
-      <div class="hop">
-        <span class="node"></span>
-        <div>
-          <h3>You send into the dark</h3>
-          <p>No tower, no cell service. naturMesh advertises over Bluetooth to
-             every phone within earshot — a few hundred feet through trees,
-             further across open ground.</p>
-          <p class="range mono">hop 1 · ~90 m · Bluetooth</p>
+      <div class="captions">
+        <div class="cap" data-cap="0">
+          <span class="kicker">Connected · The calm before the storm</span>
+          <h1 class="display">No towers. No internet.<br>No problem.</h1>
+          <p>NaturMesh gives fire and police quicker access to the locations of those in need of rescue.</p>
+        </div>
+        <div class="cap warn" data-cap="1">
+          <span class="kicker">Hurricane Helene · 2024</span>
+          <h2 class="display">Hurricane destruction.<br>How bad will this be?</h2>
+          <p>3,400 cell sites were knocked out. 90% of Asheville, NC and multiple surrounding mountain communities were left completely offline.</p>
+        </div>
+        <div class="cap warn" data-cap="2">
+          <span class="kicker">Hurricane Katrina · 2005</span>
+          <h2 class="display">Mother Nature’s destruction.<br>Calls can’t go through for help.</h2>
+          <p>3 weeks until anyone could successfully make a phone call. Even after those 3 weeks, 60% of networks were still down.</p>
+        </div>
+        <div class="cap long" data-cap="3">
+          <span class="kicker">NaturMesh · 23 phones nearby</span>
+          <h2 class="display">Get connected with the right people at the right time, when it matters most.</h2>
+          <p>Each phone relays messages to the next using Bluetooth and Wi-Fi Direct. It turns each phone into a tiny cell tower that helps relay messages.</p>
         </div>
       </div>
-      <div class="hop">
-        <span class="node"></span>
-        <div>
-          <h3>Strangers carry it forward</h3>
-          <p>Once two phones find each other over Bluetooth, they open a
-             longer Wi-Fi Direct link to actually move your message — no
-             access point, no pairing screen, no password. Each phone passes
-             it on once, then forgets it — nobody needs to know you to help
-             you.</p>
-          <p class="range mono">hops 2–7 · up to ~1.5 km through a crowd · Wi-Fi Direct</p>
+
+      <div class="readout" role="status" aria-live="polite">
+        <span class="bars" id="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="lbl">Carrier <b id="carrier">4 bars</b></span>
+        <span class="sep"></span>
+        <span class="meshpip" id="pip"><span class="dot"></span><span id="peers">mesh idle</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ THE FIRST 72 HOURS ══════════════ -->
+  <section id="why">
+    <div class="wrap why-grid">
+      <div>
+        <p class="eyebrow">The first 72 hours</p>
+        <h2>Needing rescue. Stuck on top of the roof, the area flooded.</h2>
+        <p class="lede">The first 72 hours after a disaster are critical for emergency response, because the hope of finding survivors decreases significantly after that. If responders can reach people and give medical care within those first 72 hours, the survival rate is at its highest.</p>
+        <p class="lede">Without being able to get calls into dispatch for help with locations, emergency response teams are left trying to find people without knowing where to look.</p>
+      </div>
+      <aside class="callwhy" aria-label="Why the ability to call matters">
+        <h3>Having the ability to call</h3>
+        <ul>
+          <li>Prevents first responders from “wasting” time looking in areas that don’t need to be checked.</li>
+          <li>Can give more accurate descriptions of where you are needing help.</li>
+          <li>Prevents panic and unnecessary travel from loved ones to disaster areas to look for you.</li>
+        </ul>
+      </aside>
+    </div>
+    <div class="wrap">
+      <div class="specs">
+        <div class="spec"><span class="n">3,400</span><span class="d">cell sites knocked out by Hurricane Helene, 2024</span></div>
+        <div class="spec"><span class="n">~200,000</span><span class="d">people left offline around Asheville, NC</span></div>
+        <div class="spec"><span class="n">14 days</span><span class="d">to restore some network connectivity after Helene</span></div>
+        <div class="spec"><span class="n">3 weeks</span><span class="d">until anyone could make a phone call after Katrina, 2005</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ HOW IT WORKS ══════════════ -->
+  <section id="how" class="alt">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2>What happens after someone taps “help”</h2>
+      <p class="lede">Our application mainly relies on Wi-Fi Direct. This protocol allows devices to connect to each other without a router or internet connection.</p>
+
+      <div class="hops">
+        <div class="hop">
+          <span class="node"></span>
+          <div>
+            <h3>It finds the phones around it</h3>
+            <p>A broadcast is sent from one phone periodically. When another phone is in range, it first negotiates over Bluetooth, then starts communicating over Wi-Fi Direct, which gives it about 650 feet (200 m) of coverage per phone.</p>
+            <p class="range mono">~650 ft (200 m) per phone · Bluetooth, then Wi-Fi Direct</p>
+          </div>
+        </div>
+        <div class="hop">
+          <span class="node"></span>
+          <div>
+            <h3>A call for help goes first</h3>
+            <p>A priority message is sent from the phone that needs help. That message is sent with higher priority through QoS (Quality of Service) and is sent out of all ports, so the user has the best chance of getting the message out.</p>
+            <p class="range mono">priority · QoS · every route</p>
+          </div>
+        </div>
+        <div class="hop">
+          <span class="node"></span>
+          <div>
+            <h3>If no one is in range yet</h3>
+            <p>If a call for help isn’t received by any device and there is no acknowledgement, the phone stores the message and forwards it out periodically. Users also have the option to force a message if there is a phone nearby.</p>
+            <p class="range mono">store and forward</p>
+          </div>
+        </div>
+        <div class="hop">
+          <span class="node"></span>
+          <div>
+            <h3>It reaches a way out</h3>
+            <p>If there is no Canopy unit nearby, no worries! A nearby phone with satellite communication service will send out the message as soon as possible.</p>
+            <p class="range mono">gateway · a Canopy unit or a satellite phone</p>
+          </div>
+        </div>
+        <div class="hop">
+          <span class="node"></span>
+          <div>
+            <h3>Dispatch sees who needs help most</h3>
+            <p>The location of the phone that needs help the most, with the app already making triage efforts to make sure the highest-priority assistance goes first.</p>
+            <p class="range mono">dispatch · highest priority first</p>
+          </div>
         </div>
       </div>
-      <div class="hop">
-        <span class="node"></span>
+
+      <div class="specs">
+        <div class="spec"><span class="n">6</span><span class="d">hops maximum for a message</span></div>
+        <div class="spec"><span class="n">~650 ft</span><span class="d">(200 m) of coverage per phone</span></div>
+        <div class="spec"><span class="n">Minimal</span><span class="d">power to relay, especially with a Canopy nearby</span></div>
+        <div class="spec"><span class="n">0</span><span class="d">sign-ups, names, phone numbers or email</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ CANOPY ══════════════ -->
+  <section id="canopy">
+    <div class="wrap">
+      <p class="eyebrow">NaturMesh Canopy</p>
+      <h2>What is a Canopy?</h2>
+      <p class="lede">A Canopy is a wireless broadband networking system that uses point-to-point and point-to-multipoint radios to provide wireless communication between locations where running a cable is either difficult or impractical.</p>
+      <p class="body-copy">A Canopy unit joins the mesh as one very strong phone, which helps in many ways. Because it’s truck-mountable, a department can deploy the unit in a dead zone and create a gateway where none exists. It also provides a collection point for emergency messages: it verifies signatures, drops duplicates, sends acknowledgement messages, and passes the dispatcher a clean, concise feed of all the emergency messages.</p>
+
+      <div class="units">
+        <article class="unit">
+          <img src="images/canopy-station.png" width="1600" height="1000" alt="Concept illustration: a Canopy Station unit with a tall antenna on the roof of a two-bay fire station, coverage rings spreading out and a fiber line running to dispatch">
+          <div class="unit-body">
+            <h3>Canopy Station</h3>
+            <p class="tag mono">On the station roof · always on</p>
+            <p>When using the NaturMesh app, the app itself handles authentication and allows automatic connection to the AP. This AP has a hardwired fiber connection to a site 30+ miles away, so connectivity is ensured.</p>
+            <p>A station should always be ready for a disaster, and having a Canopy permanently deployed helps with users being educated about available networks, and where to go after a storm or disaster.</p>
+            <dl>
+              <dt>Range</dt><dd>Up to 1 mile, omnidirectional</dd>
+              <dt>Backhaul</dt><dd>Hardwired fiber to a site 30+ miles away</dd>
+              <dt>Bandwidth</dt><dd>More than phones alone, because it’s hardwired</dd>
+            </dl>
+          </div>
+        </article>
+        <article class="unit">
+          <img src="images/canopy-mobile.png" width="1600" height="1000" alt="Concept illustration: a Canopy Mobile unit on a red brush truck with a raised mast, a satellite terminal in the bed and a satellite link overhead">
+          <div class="unit-body">
+            <h3>Canopy Mobile</h3>
+            <p class="tag mono">On a truck · goes where it’s needed</p>
+            <p>A mobile deployment on a specialized vehicle with a service similar to Starlink allows quick network access for the firefighters and others.</p>
+            <p>The truck-mounted option means a unit can be deployed in a rural area to help get coverage out, even where there aren’t a lot of phones around.</p>
+            <dl>
+              <dt>Setup</dt><dd>5 minutes</dd>
+              <dt>Runtime</dt><dd>2 weeks without power on our battery systems</dd>
+              <dt>Backhaul</dt><dd>Satellite</dd>
+            </dl>
+          </div>
+        </article>
+      </div>
+
+      <div class="why-canopy">
         <div>
-          <h3>Or it rides in a pocket</h3>
-          <p>If the chain breaks, the message waits. When that phone walks into
-             range of another cluster — a shelter, a fire hall, a road crew — it
-             delivers itself.</p>
-          <p class="range mono">store and forward · minutes to hours</p>
+          <p class="eyebrow">Why departments want one</p>
+          <p class="lede">Fire and police departments would want one because it gives them reliable communication between other stations, emergency response vehicles, and dispatch centers.</p>
+          <p class="body-copy">They would also be interested in the mobile data access they get from the Canopy, which gives them access to incident reporting, mapping, and Computer-Aided Dispatch (CAD). A Canopy is also a cost-effective way for remote stations, towers, cameras, weather sensors, and emergency communication equipment to stay connected.</p>
+          <p class="body-copy">The Canopy unit handles all the heavy lifting. It talks the same way phones already talk to each other, so from a user’s side it looks like one more neighbor in the mesh. It uses a lower Hz rating to penetrate rubble better.</p>
+        </div>
+        <figure>
+          <svg id="radiusmap" class="radiusmap" viewBox="0 0 800 560" role="img"
+               aria-label="Coverage map: a Canopy unit at the center labeled Home Base, rings out to one mile labeled Best Coverage, and phones past one mile labeled Not Connected"></svg>
+          <figcaption class="map-legend">
+            <span class="best"><i></i>Best Coverage</span>
+            <span class="home"><i></i>Home Base</span>
+            <span class="none"><i></i>Not Connected</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="specs">
+        <div class="spec"><span class="n">1 mile</span><span class="d">range, omnidirectional</span></div>
+        <div class="spec"><span class="n">5 min</span><span class="d">setup for the mobile version</span></div>
+        <div class="spec"><span class="n">2 weeks</span><span class="d">runtime on our special batteries</span></div>
+        <div class="spec"><span class="n">Sat + fiber</span><span class="d">to get messages back to dispatch</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ IN THE FIELD ══════════════ -->
+  <section id="field" class="alt">
+    <div class="wrap">
+      <p class="eyebrow">In the field</p>
+      <h2>How departments would use it</h2>
+      <div class="rows">
+        <div class="row">
+          <h3>During a wildfire</h3>
+          <p>A Canopy Mobile on a specialized vehicle, with a service similar to Starlink, gives firefighters and others quick network access right where they’re working.</p>
+        </div>
+        <div class="row">
+          <h3>After a storm</h3>
+          <p>Fire and police could use the Canopy after a storm in many good ways. One of them is a mutual meetup point where people in distress can get access to the internet, call, text, and send out more reliable emergency alerts. The Canopy also allows for a stronger mesh, with better bandwidth.</p>
+        </div>
+        <div class="row">
+          <h3>Mutual aid</h3>
+          <p>Having several Canopy units helps build a stronger mesh network and gives better coverage across a city. Having multiple hardwired versions of the Canopy helps ensure one AP doesn’t get overwhelmed quickly.</p>
+        </div>
+        <div class="row">
+          <h3>Schools and fire halls</h3>
+          <p>If a Wi-Fi AP at a school or fire station still has power, you could also use this AP to strengthen connectivity and provide a better connection than multiple phones could provide.</p>
+        </div>
+        <div class="row">
+          <h3>Group channels</h3>
+          <p>Group channels allow shared message threads that only certain people can see, so fire crews, shelters, and road teams can communicate and share updates quickly in a disaster zone, even without internet.</p>
         </div>
       </div>
-      <div class="hop">
-        <span class="node"></span>
+    </div>
+  </section>
+
+  <!-- ══════════════ DEFENDING THE MESH ══════════════ -->
+  <section id="security">
+    <div class="wrap">
+      <p class="eyebrow">Defending the mesh</p>
+      <h2>One bad phone can’t break the mesh.</h2>
+      <p class="lede">Instead of sending your message to one neighbor, sending copies down several routes lets your message reach its destination. The dispatcher can also acknowledge the message, which tells your phone to stop trying to send it to dispatch.</p>
+
+      <div class="tdr">
+        <div class="threat"><b>The threat</b><p>A rogue phone joins the mesh and quietly drops messages.</p></div>
+        <div class="defense"><b>Our defense</b><p>Redundant routing sends every message down multiple paths.</p></div>
+        <div class="result"><b>The result</b><p>One bad phone can’t silence a call for help.</p></div>
+      </div>
+
+      <div class="trust">
+        <article>
+          <h3>End-to-end encryption</h3>
+          <p>End-to-end encryption means a message is locked on the user’s phone and only unlocked at dispatch, so every phone it passes through along the way carries it like a sealed envelope it can’t open. Even if someone intercepts the message or runs a rogue phone, all they get is scrambled data, since they don’t have the key.</p>
+        </article>
+        <article>
+          <h3>Digital signatures</h3>
+          <p>A digital signature ensures that the message sent by the phone isn’t altered while in transit. It confirms that messages are coming from the person who sent them and prevents misinformation.</p>
+        </article>
+        <article>
+          <h3>Anonymous session IDs</h3>
+          <p>An anonymous session ID protects users by removing the need to share personal information they may fear will end up in the wrong hands. The department can also handle fake or abusive calls by rate-limiting and flagging a session ID, without ever knowing who is behind it.</p>
+        </article>
+        <article>
+          <h3>Redundant routing</h3>
+          <p>If a path is damaged, the message is already going down more than one route, so no one notices the failure at first. When a neighbor stops responding, the mesh reroutes around that gap. This self-healing behavior helps protect the mesh.</p>
+          <p>If a path is overloaded, redundant routes spread the message across several routes, so no single link has to carry everything.</p>
+        </article>
+      </div>
+
+      <div class="never">
         <div>
-          <h3>It finds the way out</h3>
-          <p>The first phone in the chain with a satellite link, a working
-             tower, or a live Wi-Fi network becomes everyone's gateway. That
-             last one turns out to be common enough after a storm to deserve
-             its own explanation, below.</p>
-          <p class="range mono">gateway · automatic</p>
+          <h3>What a resident never has to give up</h3>
+          <ul>
+            <li>Their name</li>
+            <li>Their phone number or email</li>
+            <li>A sign-up</li>
+          </ul>
+        </div>
+        <p>This helps a department get people to use it, because it doesn’t require any setup: just use it when you need it. Users don’t have to worry about giving away information that could lead to privacy concerns. And the more people are willing to use the app, the stronger the mesh gets.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ OPEN STANDARDS ══════════════ -->
+  <section id="open" class="alt">
+    <div class="wrap">
+      <p class="eyebrow">No vendor lock-in</p>
+      <h2>Built on open standards</h2>
+      <p class="lede">Every part of Canopy uses public, widely reviewed standards, so departments aren’t locked into a single vendor. Equipment can be sourced from multiple suppliers, works with neighboring agencies’ units, and has security that experts can inspect. The result is a system that’s easier to buy, easier to trust, and built to last.</p>
+      <div class="standards">
+        <div class="standard"><span class="tag">Bluetooth + Wi-Fi Direct</span><p>These radios are already built into nearly every phone, so it’s easy for users to join the mesh.</p></div>
+        <div class="standard"><span class="tag">OpenWrt</span><p>Open-source router software that runs on affordable, off-the-shelf hardware, so a department could build, inspect, and repair Canopy units without depending on a vendor.</p></div>
+        <div class="standard"><span class="tag">AREDN</span><p>An amateur radio network that gives the Canopy unit a backhaul that keeps working even when cell service or the internet is down.</p></div>
+        <div class="standard"><span class="tag">CAP alerts</span><p>The Common Alerting Protocol that emergency agencies already use for public warnings, which the Canopy unit can use to send and receive alerts.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ BEFORE THE STORM ══════════════ -->
+  <section id="before">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Before the storm</p>
+        <h2>Have it when you don’t need it, so when you need it, you have it.</h2>
+        <p class="lede">You need NaturMesh set up before a disaster happens, so when one occurs and the networks go down, NaturMesh can take over and get you connected.</p>
+      </div>
+      <div class="shot" data-shot="root" role="img" aria-label="A large tree with its roots exposed, lying in a forest"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FREE FOR RESIDENTS ══════════════ -->
+  <section id="app" class="alt banner">
+    <div class="wrap">
+      <p class="eyebrow">Free for residents</p>
+      <p class="display">When you need reliable connection, rely on NaturMesh.</p>
+      <p class="lede">Being free gives access to more people, including people who may not feel comfortable purchasing something for a “just in case” need.</p>
+      <div class="stores">
+        <a class="primary" href="#app" onclick="return false;">Download for iOS</a>
+        <a class="ghost" href="#app" onclick="return false;">Download for Android</a>
+      </div>
+      <p class="fineprint">Concept buttons — for example only.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ QUESTIONS ══════════════ -->
+  <section id="questions">
+    <div class="wrap">
+      <p class="eyebrow">Before you buy</p>
+      <h2>Questions departments ask</h2>
+      <div class="qa">
+        <div class="topic">
+          <h3>Coverage and performance</h3>
+          <dl>
+            <div><dt>How far does a unit reach?</dt><dd>Reach depends on mounting height, terrain, and how many phones are nearby. A Canopy reaches up to 1 mile.</dd></div>
+            <div><dt>What if there aren’t a lot of phones around?</dt><dd>The Canopy unit helps with this, and we also have a truck-mounted option so a unit can be deployed in a rural area to help get coverage out.</dd></div>
+          </dl>
+        </div>
+        <div class="topic">
+          <h3>Reliability</h3>
+          <dl>
+            <div><dt>What if a unit fails?</dt><dd>The best option is deploying more than one unit in an area, so you don’t have a single point of failure.</dd></div>
+            <div><dt>What if a rogue phone joins the network?</dt><dd>We have measures in place with our defending-the-mesh function that render any rogue phone obsolete.</dd></div>
+          </dl>
+        </div>
+        <div class="topic">
+          <h3>Privacy</h3>
+          <dl>
+            <div><dt>What information do you collect?</dt><dd>Nothing. All calls are given anonymous session IDs. A location is attached only to a call for help, and it’s encrypted end to end so only dispatch can read it.</dd></div>
+            <div><dt>How do we know a call is real?</dt><dd>Digital signatures prove that a message wasn’t forged or altered during its journey back to dispatch.</dd></div>
+          </dl>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="specs">
-      <div class="spec"><span class="n">7</span><span class="d">hops before a message retires</span></div>
-      <div class="spec"><span class="n">0</span><span class="d">accounts, phone numbers or email</span></div>
-      <div class="spec"><span class="n">X25519</span><span class="d">end-to-end on every direct message</span></div>
-      <div class="spec"><span class="n">~4%</span><span class="d">battery per hour while relaying</span></div>
+  <!-- ══════════════ CONTACT ══════════════ -->
+  <section id="contact" class="alt banner">
+    <div class="wrap">
+      <p class="eyebrow">Talk to us</p>
+      <p class="display">Build the network before you need it.</p>
+      <p class="lede">Canopy is priced per unit, since that’s easier for a department to scale. A meeting with your department would cover your situation, your current communication options, privacy, and more, including grant funding, since most departments pay for communications gear through emergency management grants.</p>
+      <div class="stores">
+        <a class="primary" href="#contact" onclick="return false;">Request a briefing</a>
+      </div>
+      <p class="fineprint">Concept button — for example only.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ══════════════ REACH: THE ACCESS-POINT BRIDGE ══════════════ -->
-<section id="reach">
-  <div class="wrap">
-    <p class="eyebrow">When phone-to-phone isn't enough</p>
-    <h2>Or it skips straight to whatever's still broadcasting.</h2>
-    <p class="lede">A relay chain of strangers is slow, and it only reaches as
-      far as the last willing phone. A single access point that survived — a
-      school's Wi-Fi, a fire hall router, a cell-on-wheels — doesn't have that
-      problem. It doesn't need the internet behind it, just power. naturMesh
-      finds it, joins it like any open network, and turns it into a bridge
-      between two clusters of phones that could never have reached each other
-      alone.</p>
-
-    <div class="reach-diagram">
-      <svg id="bridge" class="bridge" viewBox="0 0 960 360"
-           preserveAspectRatio="xMidYMid meet" role="img"
-           aria-label="Diagram: two clusters of phones, too far apart to link directly, each connecting instead to a single access point that bridges them together"></svg>
-      <div class="bridge-caption">
-        <span>Cluster A — six phones, no path across</span>
-        <span class="mid">One AP, still running on its own power</span>
-        <span>Cluster B — four phones, out of reach</span>
+  <!-- ══════════════ CREDITS ══════════════ -->
+  <section class="credits">
+    <div class="wrap">
+      <p class="eyebrow">Credits</p>
+      <h2>Credit of the photos goes to:</h2>
+      <div class="credit-list">
+        <div class="credit">
+          <span class="what">Misty pine forest — opening frame</span>
+          <span class="who">Photo by <a href="https://www.pexels.com/@jaymantri/">Jaymantri</a> on <a href="https://www.pexels.com/photo/nature-forest-trees-fog-4827/">Pexels</a> · CC0</span>
+        </div>
+        <div class="credit">
+          <span class="what">Pine forest under a dark, clouded sky — the storm</span>
+          <span class="who">Photo by <a href="https://unsplash.com/@madebyjens">Jens Lelie</a> on <a href="https://unsplash.com/photos/landscape-photography-of-pine-trees-at-mountain-GUneOBRhq9w">Unsplash</a></span>
+        </div>
+        <div class="credit">
+          <span class="what">Storm damage, Portree Forest — the aftermath</span>
+          <span class="who">Photo by <a href="https://www.geograph.org.uk/profile/20032">Richard Dorrell</a>, <a href="https://www.geograph.org.uk/photo/629750">Geograph</a> · <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a></span>
+        </div>
+        <div class="credit">
+          <span class="what">Sun setting behind a radio tower — the closing frame</span>
+          <span class="who">Photo by <a href="https://unsplash.com/@hdbernd">Bernd Dittrich</a> on <a href="https://unsplash.com/photos/the-sun-is-setting-behind-a-radio-tower-f_QbzyzXEnk">Unsplash</a></span>
+        </div>
+        <div class="credit">
+          <span class="what">Exposed tree roots — “Before the storm” panel</span>
+          <span class="who">Photo by <a href="https://unsplash.com/@lloydkearney">Lloyd Kearney</a> on <a href="https://unsplash.com/photos/a-large-tree-with-very-large-roots-in-a-forest-Vktxa8TjPB0">Unsplash</a></span>
+        </div>
+        <div class="credit">
+          <span class="what">Canopy Station and Canopy Mobile illustrations, logo, and diagrams</span>
+          <span class="who">Concept art made for this project</span>
+        </div>
+        <div class="credit">
+          <span class="what">Typefaces — Fraunces and Archivo</span>
+          <span class="who">Via <a href="https://fonts.google.com/">Google Fonts</a> · SIL Open Font License</span>
+        </div>
       </div>
+      <p class="licnote">Photos come from Pexels (Pexels License, one under CC0), Unsplash (Unsplash License), and Geograph Britain and Ireland (CC BY-SA 2.0). Pexels and Unsplash don’t require credit; the Geograph photo’s license does, so its credit names the photographer, the source, and the license.</p>
     </div>
+  </section>
 
-    <div class="specs">
-      <div class="spec"><span class="n">2 hops</span><span class="d">in and out — instead of a chain of relays</span></div>
-      <div class="spec"><span class="n">~50 m</span><span class="d">typical range to associate, indoors</span></div>
-      <div class="spec"><span class="n">0</span><span class="d">internet required behind it — just power</span></div>
+  <p class="disclaimer">Concept idea only — not an actual application.</p>
+
+  <footer>
+    <div class="wrap">
+      <span>NaturMesh — Stay connected.</span>
+      <span class="mono">Sam · Lane · Courtney — FHSU INF 300 · 2026</span>
     </div>
-  </div>
-</section>
-
-<!-- ══════════════ SPLIT ══════════════ -->
-<section>
-  <div class="wrap split">
-    <div>
-      <p class="eyebrow">Install it on a calm Tuesday</p>
-      <h2>The worst time to download an app is during the emergency.</h2>
-      <p class="lede">A mesh only works if enough people are already carrying it
-        when the towers fail — and you cannot install anything once they have.
-        naturMesh sits at zero battery cost until the day it matters, then wakes
-        up on its own.</p>
-    </div>
-    <div class="shot" data-shot="root" role="img"
-         aria-label="A large tree with its roots exposed, lying in a forest"></div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap split">
-    <div class="shot" data-shot="regrow" role="img"
-         aria-label="Tall spruces in coniferous woods with mist floating over the treetops"></div>
-    <div>
-      <p class="eyebrow">Built for the people who stay</p>
-      <h2>Volunteer fire, school shelters, and whoever has the chainsaw.</h2>
-      <p class="lede">Group channels for a shelter roster or a road-clearing
-        crew. An urgent flag that cuts through a hundred messages. Nothing that
-        needs a login, a contract, or a vendor on the phone at two in the
-        morning.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ FREE ══════════════ -->
-<section class="free" id="get">
-  <div class="wrap">
-    <p class="eyebrow">Free. Actually free.</p>
-    <p class="display">No price, no tier,<br>no upsell at the worst<br>moment of your year.</p>
-    <p class="lede">Emergency communication with a paywall is not emergency
-      communication. naturMesh has no premium plan and no ads, and it never
-      will.</p>
-    <div class="stores">
-      <a class="primary" href="#" onclick="return false;">Download for iOS</a>
-      <a class="ghost" href="#" onclick="return false;">Download for Android</a>
-    </div>
-    <p class="fineprint">These buttons do not go anywhere. naturMesh is a
-      design concept, not a shipping product — see the note at the bottom of
-      the page.</p>
-  </div>
-</section>
-
-<!-- ══════════════ CREDITS ══════════════ -->
-<section class="credits">
-  <div class="wrap">
-    <p class="eyebrow">Credits</p>
-    <h2>Every photograph on this page, and where it came from.</h2>
-
-    <div class="credit-list">
-      <div class="credit">
-        <span class="what">Misty pine forest — opening frame</span>
-        <span class="who">Photo by <a href="https://www.pexels.com/@jaymantri/">Jaymantri</a>
-          on <a href="https://www.pexels.com/photo/nature-forest-trees-fog-4827/">Pexels</a> · CC0</span>
-      </div>
-      <div class="credit">
-        <span class="what">Pine forest silhouetted against a dark, clouded sky — the turn</span>
-        <span class="who">Photo by <a href="https://unsplash.com/@madebyjens">Jens Lelie</a>
-          on <a href="https://unsplash.com/photos/landscape-photography-of-pine-trees-at-mountain-GUneOBRhq9w">Unsplash</a></span>
-      </div>
-      <div class="credit">
-        <span class="what">Storm damage, Portree Forest — the aftermath</span>
-        <span class="who">Photo by <a href="https://www.geograph.org.uk/profile/20032">Richard Dorrell</a>,
-          <a href="https://www.geograph.org.uk/photo/629750">Geograph</a> ·
-          <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a></span>
-      </div>
-      <div class="credit">
-        <span class="what">Sun setting behind a radio tower — the closing frame</span>
-        <span class="who">Photo by <a href="https://unsplash.com/@hdbernd">Bernd Dittrich</a>
-          on <a href="https://unsplash.com/photos/the-sun-is-setting-behind-a-radio-tower-f_QbzyzXEnk">Unsplash</a></span>
-      </div>
-      <div class="credit">
-        <span class="what">Exposed tree roots — "install it early" panel</span>
-        <span class="who">Photo by <a href="https://unsplash.com/@lloydkearney">Lloyd Kearney</a>
-          on <a href="https://unsplash.com/photos/a-large-tree-with-very-large-roots-in-a-forest-Vktxa8TjPB0">Unsplash</a></span>
-      </div>
-      <div class="credit">
-        <span class="what">Spruces above the mist — closing panel</span>
-        <span class="who">Photo by <a href="https://www.pexels.com/@jplenio/">Johannes Plenio</a>
-          on <a href="https://www.pexels.com/photo/forest-in-foggy-morning-in-summer-4500037/">Pexels</a></span>
-      </div>
-      <div class="credit">
-        <span class="what">Logo, wordmark, and every diagram on this page</span>
-        <span class="who">Drawn for this page. Yours to change.</span>
-      </div>
-      <div class="credit">
-        <span class="what">Typefaces — Fraunces and Archivo</span>
-        <span class="who">Undercase Type and Omnibus-Type, via
-          <a href="https://fonts.google.com/">Google Fonts</a> · SIL Open Font License</span>
-      </div>
-    </div>
-
-    <p class="licnote">Photographs are drawn from Pexels (Pexels License, one
-      released under the older CC0 terms), Unsplash (Unsplash License), and
-      Geograph Britain and Ireland (Creative Commons Attribution-ShareAlike
-      2.0). Pexels and Unsplash permit free commercial use without requiring
-      attribution — they're credited anyway because it's the decent thing to
-      do. The Geograph photo is different: CC BY-SA 2.0 requires attribution,
-      which is why that credit names the photographer, the source, and the
-      licence itself rather than just a courtesy link. Photographers can
-      still update or remove their work at any time, so if this page ever
-      goes public, it's worth confirming each link still resolves.</p>
-  </div>
-</section>
-
-<p class="disclaimer">naturMesh is a concept. There is no app, no company, and
-  nothing to download.</p>
-
-<footer>
-  <div class="wrap">
-    <span>naturMesh — a design exercise in what an emergency mesh app could look like.</span>
-    <span class="mono">2026</span>
-  </div>
-</footer>
+  </footer>
 </main>
 
 <script>
 /* ══════════════ hero: the forest-to-storm scroll ══════════════ */
 (function(){
-  var stage   = document.getElementById('stage');
-  var plates  = {
+  var stage = document.getElementById('stage');
+  var plates = {
     calm : document.querySelector('[data-plate="calm"]'),
     storm: document.querySelector('[data-plate="storm"]'),
     after: document.querySelector('[data-plate="after"]'),
     dawn : document.querySelector('[data-plate="dawn"]')
   };
-  var chill   = document.getElementById('chill');
-  var caps    = Array.prototype.slice.call(document.querySelectorAll('.cap'));
-  var bars    = Array.prototype.slice.call(document.querySelectorAll('#bars i'));
+  var chill = document.getElementById('chill');
+  var caps = Array.prototype.slice.call(document.querySelectorAll('.cap'));
+  var bars = Array.prototype.slice.call(document.querySelectorAll('#bars i'));
   var carrier = document.getElementById('carrier');
-  var pip     = document.getElementById('pip');
-  var peers   = document.getElementById('peers');
-  var graph   = document.getElementById('graph');
-  var cue     = document.getElementById('cue');
+  var pip = document.getElementById('pip');
+  var peers = document.getElementById('peers');
+  var graph = document.getElementById('graph');
+  var cue = document.getElementById('cue');
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ns = 'http://www.w3.org/2000/svg';
 
-  /* ---- build the mesh graph once ---- */
-  var NODES = [
-    [140,430],[268,352],[214,208],[392,268],[356,466],[498,380],[470,168],
-    [620,290],[604,470],[742,214],[770,398],[880,318],[318,120],[664,110]
-  ];
+  var NODES = [[140,430],[268,352],[214,208],[392,268],[356,466],[498,380],[470,168],
+               [620,290],[604,470],[742,214],[770,398],[880,318],[318,120],[664,110]];
   var EDGES = [[0,1],[1,2],[1,4],[2,3],[3,4],[3,5],[2,12],[3,6],[5,6],[5,7],
                [5,8],[7,8],[7,9],[6,9],[9,13],[9,10],[8,10],[10,11],[9,11]];
   var lines = [];
   EDGES.forEach(function(e){
     var a = NODES[e[0]], b = NODES[e[1]];
-    var l = document.createElementNS('http://www.w3.org/2000/svg','line');
+    var l = document.createElementNS(ns,'line');
     l.setAttribute('x1',a[0]); l.setAttribute('y1',a[1]);
     l.setAttribute('x2',b[0]); l.setAttribute('y2',b[1]);
     var len = Math.hypot(b[0]-a[0], b[1]-a[1]);
@@ -643,34 +755,27 @@
   var dots = [];
   NODES.forEach(function(n,i){
     if(i % 4 === 0){
-      var h = document.createElementNS('http://www.w3.org/2000/svg','circle');
-      h.setAttribute('cx',n[0]); h.setAttribute('cy',n[1]);
-      h.setAttribute('r',13); h.setAttribute('class','halo');
+      var h = document.createElementNS(ns,'circle');
+      h.setAttribute('cx',n[0]); h.setAttribute('cy',n[1]); h.setAttribute('r',13); h.setAttribute('class','halo');
       graph.appendChild(h);
     }
-    var c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    var c = document.createElementNS(ns,'circle');
     c.setAttribute('cx',n[0]); c.setAttribute('cy',n[1]); c.setAttribute('r',4);
     graph.appendChild(c);
     dots.push(c);
   });
 
-  /* ---- helpers ---- */
   function clamp(v){ return v < 0 ? 0 : v > 1 ? 1 : v; }
   function seg(p,a,b){ return clamp((p - a) / (b - a)); }
   function ease(t){ return t*t*(3 - 2*t); }
-  function show(el, v){
-    el.style.opacity = v;
-    el.style.transform = 'translateY(' + ((1 - v) * 14) + 'px)';
-  }
-
+  function show(el, v){ el.style.opacity = v; el.style.transform = 'translateY(' + ((1 - v) * 14) + 'px)'; }
   var lastBars = -1, lastPeers = '';
 
   function frame(){
     var rect = stage.getBoundingClientRect();
     var span = stage.offsetHeight - window.innerHeight;
-    var p    = clamp(-rect.top / (span || 1));
+    var p = clamp(-rect.top / (span || 1));
 
-    /* photo cross-dissolve */
     var toStorm = ease(seg(p, .26, .46));
     var toAfter = ease(seg(p, .56, .74));
     var toDawn  = ease(seg(p, .90, 1.00));
@@ -679,25 +784,19 @@
     plates.after.style.opacity = toAfter * (1 - toDawn);
     plates.dawn.style.opacity  = toDawn;
 
-    /* slow push-in keeps it feeling alive without parallax jitter */
-    var z = 1.10 - p * .10;
-    plates.calm.style.transform  = 'scale(' + z + ')';
+    plates.calm.style.transform  = 'scale(' + (1.10 - p * .10) + ')';
     plates.storm.style.transform = 'scale(' + (1.04 + p * .05) + ')';
     plates.after.style.transform = 'scale(' + (1.12 - p * .08) + ')';
     plates.dawn.style.transform  = 'scale(' + (1.10 - toDawn * .06) + ')';
 
-    /* colour drains out of the world, then lifts again once the mesh is up */
     chill.style.opacity = ease(seg(p, .30, .66)) * .55 * (1 - toDawn);
 
-    /* captions */
     show(caps[0], 1 - ease(seg(p, .10, .22)));
     show(caps[1], ease(seg(p, .26, .34)) * (1 - ease(seg(p, .44, .52))));
     show(caps[2], ease(seg(p, .56, .63)) * (1 - ease(seg(p, .72, .78))));
     show(caps[3], ease(seg(p, .80, .87)));
-
     cue.style.opacity = (1 - ease(seg(p, .02, .10))) * .5;
 
-    /* carrier signal dying */
     var lit = p < .30 ? 4 : p < .42 ? 3 : p < .50 ? 2 : p < .57 ? 1 : 0;
     if(lit !== lastBars){
       bars.forEach(function(b,i){
@@ -709,7 +808,6 @@
       lastBars = lit;
     }
 
-    /* mesh waking up */
     var wake = ease(seg(p, .62, .90));
     graph.style.opacity = wake;
     lines.forEach(function(l,i){
@@ -720,14 +818,9 @@
       var t = ease(seg(p, .62 + (i / dots.length) * .18, .70 + (i / dots.length) * .18));
       d.setAttribute('r', 1.5 + t * 3);
     });
-
     var count = Math.round(wake * 23);
     var label = count === 0 ? 'mesh idle' : count + ' phones nearby';
-    if(label !== lastPeers){
-      peers.textContent = label;
-      pip.classList.toggle('live', count > 0);
-      lastPeers = label;
-    }
+    if(label !== lastPeers){ peers.textContent = label; pip.classList.toggle('live', count > 0); lastPeers = label; }
   }
 
   var ticking = false;
@@ -738,17 +831,14 @@
   }
 
   if(reduced){
-    /* no scroll-driven motion: show the end state, let the captions stack */
-    caps.forEach(function(c){ c.style.gridArea='auto'; c.style.opacity=1;
-                              c.style.transform='none'; c.style.marginBottom='3rem'; });
+    caps.forEach(function(c){ c.style.gridArea='auto'; c.style.opacity=1; c.style.transform='none'; c.style.marginBottom='3rem'; });
     plates.dawn.style.opacity = 1;
     graph.style.opacity = 1;
     lines.forEach(function(l){ l.el.style.strokeDashoffset = 0; });
     cue.style.display = 'none';
     stage.style.height = 'auto';
-    document.querySelector('.sticky').style.position = 'static';
-    document.querySelector('.sticky').style.height = 'auto';
-    document.querySelector('.sticky').style.padding = '8rem 0 5rem';
+    var st = document.querySelector('.sticky');
+    st.style.position = 'static'; st.style.height = 'auto'; st.style.padding = '8rem 0 7rem';
   } else {
     window.addEventListener('scroll', onScroll, {passive:true});
     window.addEventListener('resize', onScroll);
@@ -756,81 +846,26 @@
   }
 })();
 
-/* ══════════════ reach: the access-point bridge diagram ══════════════ */
+/* ══════════════ the Canopy coverage map ══════════════ */
 (function(){
-  var svg = document.getElementById('bridge');
+  var svg = document.getElementById('radiusmap');
   if(!svg) return;
   var ns = 'http://www.w3.org/2000/svg';
-
-  var LEFT        = [[70,255],[120,300],[195,235],[150,175],[85,195]];
-  var LEFT_EDGES  = [[0,1],[0,3],[1,2],[2,3],[3,4],[4,0],[2,4]];
-  var RIGHT       = [[890,255],[835,300],[765,235],[810,175]];
-  var RIGHT_EDGES = [[0,1],[1,2],[2,3],[3,0],[0,2]];
-  var AP          = [480,60];
-  var LINKS       = [[AP, LEFT[3]], [AP, RIGHT[3]]];
-
-  function addLine(a,b,cls){
-    var l = document.createElementNS(ns,'line');
-    l.setAttribute('x1',a[0]); l.setAttribute('y1',a[1]);
-    l.setAttribute('x2',b[0]); l.setAttribute('y2',b[1]);
-    l.setAttribute('class',cls);
-    svg.appendChild(l);
-    return l;
-  }
-  function addDot(p,r,cls){
-    var c = document.createElementNS(ns,'circle');
-    c.setAttribute('cx',p[0]); c.setAttribute('cy',p[1]); c.setAttribute('r',r);
-    c.setAttribute('class',cls);
-    svg.appendChild(c);
-  }
-
-  LEFT_EDGES.forEach(function(e){ addLine(LEFT[e[0]], LEFT[e[1]], 'mesh-line'); });
-  RIGHT_EDGES.forEach(function(e){ addLine(RIGHT[e[0]], RIGHT[e[1]], 'mesh-line'); });
-  addLine(LEFT[2], RIGHT[2], 'gap-line');
-
-  LINKS.forEach(function(seg){
-    var l = addLine(seg[0], seg[1], 'ap-link');
-    var len = Math.hypot(seg[1][0]-seg[0][0], seg[1][1]-seg[0][1]);
-    l.style.setProperty('--len', len);
+  var CX = 400, CY = 280;
+  var RINGS = [{r:70,cls:'r1',t:'¼ mi'},{r:140,cls:'r2',t:'½ mi'},{r:220,cls:'r3',t:'1 mi'}];
+  var PHONES = [[430,250,'phone'],[370,315,'phone'],[465,340,'phone'],[330,225,'phone'],[400,420,'phone'],
+                [560,280,'phone'],[255,180,'phone'],[520,170,'phone'],[300,380,'phone'],
+                [120,470,'phone out'],[680,110,'phone out'],[700,470,'phone out']];
+  function el(tag, attrs){ var e = document.createElementNS(ns, tag); for(var k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+  RINGS.forEach(function(g){ el('circle',{cx:CX,cy:CY,r:g.r,'class':'ring '+g.cls}); });
+  var ang = -40 * Math.PI / 180;
+  RINGS.forEach(function(g){
+    var t = el('text',{x:CX + g.r*Math.cos(ang) + 8, y:CY + g.r*Math.sin(ang) - 4,'class':'ring-label'});
+    t.textContent = g.t;
   });
-
-  LEFT.forEach(function(p){ addDot(p, 4.5, 'phone'); });
-  RIGHT.forEach(function(p){ addDot(p, 4.5, 'phone'); });
-
-  addDot(AP, 14, 'beacon-pulse');
-  addDot(AP, 7, 'beacon');
-
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function addPackets(){
-    LINKS.forEach(function(seg, i){
-      var c = document.createElementNS(ns,'circle');
-      c.setAttribute('r', 3); c.setAttribute('class','packet');
-      var anim = document.createElementNS(ns,'animateMotion');
-      anim.setAttribute('dur','2.3s');
-      anim.setAttribute('repeatCount','indefinite');
-      anim.setAttribute('begin', (i * 1.1) + 's');
-      anim.setAttribute('path', 'M'+seg[0][0]+','+seg[0][1]+' L'+seg[1][0]+','+seg[1][1]);
-      c.appendChild(anim);
-      svg.appendChild(c);
-    });
-  }
-
-  function reveal(){
-    svg.classList.add('in');
-    if(!reduced) addPackets();
-  }
-
-  if(reduced || !('IntersectionObserver' in window)){
-    reveal();
-  } else {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(en.isIntersecting){ reveal(); io.disconnect(); }
-      });
-    }, {threshold:.3});
-    io.observe(svg);
-  }
+  PHONES.forEach(function(d){ el('circle',{cx:d[0],cy:d[1],r:5,'class':d[2]}); });
+  el('circle',{cx:CX,cy:CY,r:14,'class':'beacon-pulse'});
+  el('circle',{cx:CX,cy:CY,r:8,'class':'beacon'});
 })();
 </script>
 </body>
